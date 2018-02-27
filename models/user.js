@@ -2,23 +2,40 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: true },
-  username: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
+  firstName: { type: String, required: 'Please your first name' },
+  lastName: { type: String, required: 'Please include last Name' },
+  username: { type: String, required: true, unique: 'Please enter a different Username' },
+  email: { type: String, required: true, unique: 'Please enter a different email.' },
   password: { type: String, required: true },
-  myProfessional: [{
+  myProfessionals: [{
     Name: {type: String},
     profession: {type: String},
     phoneNumber: {type: String}
   }],
-  mySupport: [{
+  mySupports: [{
     Name: {type: String},
-    profession: {type: String},
+    relationship: {type: String},
     phoneNumber: {type: String}
   }],
-  thoughtDiary: [{ type: mongoose.Schema.ObjectId, ref: 'Diary'}]
+  thoughtDiary: [ {thoughtDiaryEntrySchema} ],
+  myCrisisPlan: { type: mongoose.Schema.ObjectId, ref: 'crisisPlan'}
 });
+
+const thoughtDiaryEntrySchema = new mongoose.Schema({
+  situation: {type: String},
+  feeling: {type: String, required: true},
+  moodRating: {type: Number, required: true},
+  thought: {type: String, required: true},
+  evidenceFor: {type: String, required: true},
+  evidenceAgainst: {type: String, required: true},
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
+}, {
+  timestamps: true
+});
+
+thoughtDiaryEntrySchema.methods.belongsTo = function logBelongsTo(user) {
+  return this.createdBy.id === user.id;
+};
 
 userSchema.set('toJSON', {
   getters: true,

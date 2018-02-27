@@ -17,11 +17,11 @@ class App extends Component {
       <Router>
         <div>
           <Nav />
-          <main>
+          <main className="container">
             <Switch>
               <Route path="/login" component={Login} />
-              <Route path="/register"   component={ Register } />
-              < UsersRoutes />
+              <Route path="/register" component={ Register } />
+              <UsersRoutes />
 
             </Switch>
 

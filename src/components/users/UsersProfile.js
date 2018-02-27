@@ -16,8 +16,7 @@ class UsersProfile extends Component {
   render() {
     return(
       <div>
-        <p>Hello</p>
-        <h3>{ this.state.user.firstName}</h3>
+        <h3>Hello { this.state.user.firstName}!</h3>
       </div>
     );
   }

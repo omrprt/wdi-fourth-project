@@ -2,6 +2,7 @@ import React, { Component }    from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+import UsersRoutes from './components/users/UsersRoutes';
 import Nav from './components/utility/Nav';
 import Login       from './components/auth/Login';
 import Register    from './components/auth/Register';
@@ -20,7 +21,7 @@ class App extends Component {
             <Switch>
               <Route path="/login" component={Login} />
               <Route path="/register"   component={ Register } />
-
+              < UsersRoutes />
 
             </Switch>
 

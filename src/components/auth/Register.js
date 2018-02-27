@@ -30,11 +30,11 @@ class Register extends React.Component {
       .post('/api/register', this.state.user)
       .then(res => {
         Auth.setToken(res.data.token);
-
-        this.props.history.push('/');
+        const id = Auth.getPayload().userId;
+        this.props.history.push(`/users/${id}`);
       })
 
-      .catch(err => this.setState({ errors: err.response.data.errors }));
+      .catch(err => this.setState({ errors: err}, () => console.log(this.state)));
 
   }
 

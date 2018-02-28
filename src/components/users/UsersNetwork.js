@@ -6,44 +6,86 @@ import Auth from '../../lib/Auth';
 class UsersNetwork extends Component {
   state = {
     user: {
-      myProfessionals: [{
-        name: {type: String},
-        profession: {type: String},
-        phoneNumber: {type: String}
-      }],
-      myFamilyandFriends: [{
-        name: {type: String},
-        relationship: {type: String},
-        phoneNumber: {type: String}
-      }],
-      errors: {}}
+      myProfessionals: [
+        {
+          name: '',
+          profession: '',
+          phoneNumber: ''
+        }
+      ],
+      myFamilyandFriends: [
+        {
+          name: '',
+          relationship: '',
+          phoneNumber: ''
+        }
+      ],
+      newProfessional: {
+        name: '',
+        profession: '',
+        phoneNumber: ''
+      },
+      errors: {}
+    }
   }
 
   componentDidMount() {
     Axios
       .get(`/api/users/${this.props.match.params.id}`)
-      .then(res => this.setState({ user: res.data }, () => console.log(this.state)))
+      .then(res => this.setState(prevState => {
+        const newState = prevState;
+        newState.user.myProfessionals = res.data.myProfessionals;
+        newState.user.myFamilyandFriends = res.data.myFamilyandFriends;
+        return newState;
+      }, () => console.log(this.state)))
       .catch(err => console.log(err));
   }
 
   handleChange = ({ target: { name, value } }) => {
-    const user = Object.assign({}, this.state.user, { [name]: value });
-    this.setState({ user });
+    const newProfessional = Object.assign({}, this.state.user.newProfessional, { [name]: value });
+    this.setState(prevState => {
+      const newState = prevState;
+      newState.user.newProfessional = newProfessional;
+      return newState;
+    }, () => console.log(this.state));
+
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
-
     Axios
-      .put(`/api/users/${this.props.match.params.id}`, this.state.user, { headers: { 'Authorization': `Bearer ${Auth.getToken()}` } })
-      .then(res => this.props.history.push(`/users/${res.data.id}/mynetwork`))
+      .put(`/api/users/${this.props.match.params.id}`, this.state.user.newProfessional, { headers: { 'Authorization': `Bearer ${Auth.getToken()}` } })
+      .then((res) => {
+        this.setState(prevState => {
+          console.log(prevState);
+          const newState = prevState;
+
+          newState.user = res.data;
+          newState.user.newProfessional = {
+            name: '',
+            profession: '',
+            phoneNumber: ''
+          };
+          return newState;
+        }, () => console.log(this.state));
+      })
       .catch(err => console.log(err));
+
   }
 
   render() {
     return(
       <div>
         <p>in network page</p>
+        <ul>
+          {this.state.user.myProfessionals.map((myProfessional, index) =>
+            <li key={index}>
+              {myProfessional.name}
+              {myProfessional.profession}
+              {myProfessional.phoneNumber}
+            </li>
+          )}
+        </ul>
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <strong>Professional&#39;s Name</strong>
@@ -52,35 +94,35 @@ class UsersNetwork extends Component {
               name="name"
               placeholder="Professional's Name"
               onChange={this.handleChange}
-              value={this.state.user.myProfessionals.name}
+              value={this.state.user.newProfessional.name}
               className="form-control"
             />
           </div>
 
           <div className="form-group">
-            <strong>Password</strong>
+            <strong>Professional&#39;s Title</strong>
             <input
-              type="password"
-              name="password"
-              placeholder="Password"
+              type="text"
+              name="profession"
+              placeholder="Professional&#39;s TitlePassword"
               onChange={this.handleChange}
-              value={this.state.user.myProfessionals.profession}
+              value={this.state.user.newProfessional.profession}
               className="form-control"
             />
           </div>
 
           <div className="form-group">
-            <strong>Password</strong>
+            <strong>Phone Number</strong>
             <input
-              type="password"
-              name="password"
-              placeholder="Password"
+              type="tel"
+              name="phoneNumber"
+              placeholder="Phone Number"
               onChange={this.handleChange}
-              value={this.state.user.myProfessionals.phoneNumber}
+              value={this.state.user.newProfessional.phoneNumber}
               className="form-control"
             />
           </div>
-          <button className="btn">Login</button>
+          <button className="btn">Add Professional</button>
         </form>
       </div>
     );

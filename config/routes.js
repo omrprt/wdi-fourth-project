@@ -3,7 +3,8 @@ const users = require('../controllers/users');
 const auth  = require('../controllers/auth');
 
 router.route('/users/:id')
-  .get(users.show);
+  .get(users.show)
+  .put(users.update);
 
 router.route('/register')
   .post(auth.register);

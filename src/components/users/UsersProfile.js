@@ -9,7 +9,6 @@ class UsersProfile extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.match.params.id);
     Axios
       .get(`/api/users/${this.props.match.params.id}`)
       .then(res => this.setState({ user: res.data }, () => console.log(this.state)))
@@ -43,7 +42,15 @@ class UsersProfile extends Component {
           </Panel.Heading>
           <Panel.Collapse>
             <Panel.Body>
-              Jane 594-3985
+              <ul>
+                {this.state.user.myProfessionals && this.state.user.myProfessionals.map((myProfessional, index) =>
+                  <li key={index}>
+                    {myProfessional.name}
+                    {myProfessional.profession}
+                    {myProfessional.phoneNumber}
+                  </li>
+                )}
+              </ul>
             </Panel.Body>
           </Panel.Collapse>
         </Panel>

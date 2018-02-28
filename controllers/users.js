@@ -11,6 +11,22 @@ function usersShow(req, res, next) {
     .catch(next);
 }
 
+function usersUpdate(req, res, next) {
+  User
+    .findByIdAndUpdate(req.params.id, {
+      $push: { myProfessionals: req.body }
+    }, {
+      new: true})
+    .exec()
+    .then((user) => {
+      if(!user) return res.notFound();
+      res.json(user);
+    })
+    .then(() => res.status(204).end())
+    .catch(next);
+}
+
 module.exports = {
-  show: usersShow
+  show: usersShow,
+  update: usersUpdate
 };

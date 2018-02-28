@@ -18,13 +18,13 @@ thoughtDiaryEntrySchema.methods.belongsTo = function logBelongsTo(user) {
 };
 
 const userSchema = new mongoose.Schema({
-  firstName: { type: String, required: 'Please your first name' },
+  firstName: { type: String, required: 'Please include your first name' },
   lastName: { type: String, required: 'Please include last Name' },
   username: { type: String, required: true, unique: 'Please enter a different Username' },
   email: { type: String, required: true, unique: 'Please enter a different email.' },
   password: { type: String, required: true },
   myProfessionals: [{
-    Name: {type: String},
+    name: {type: String},
     profession: {type: String},
     phoneNumber: {type: String}
   }],

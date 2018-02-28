@@ -34,7 +34,7 @@ class Register extends React.Component {
         this.props.history.push(`/users/${id}`);
       })
 
-      .catch(err => this.setState({ errors: err}, () => console.log(this.state)));
+      .catch(err => this.setState({ errors: err.response.data.errors}, () => console.log(this.state)));
 
   }
 

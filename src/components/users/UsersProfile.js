@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import { Panel } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 class UsersProfile extends Component {
   state = {
@@ -8,6 +9,7 @@ class UsersProfile extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props.match.params.id);
     Axios
       .get(`/api/users/${this.props.match.params.id}`)
       .then(res => this.setState({ user: res.data }, () => console.log(this.state)))
@@ -23,7 +25,7 @@ class UsersProfile extends Component {
           <Panel.Heading>
             <Panel.Toggle componentClass="a"><i className="fa fa-caret-down fa-3x"></i></Panel.Toggle>
             <Panel.Title>Thought Diary</Panel.Title>
-            <Panel.Toggle href="http://www.google.com"><i className="fa fa-edit fa-2x"></i></Panel.Toggle>
+            <Link to="myNetwork">  <i className="fa fa-edit fa-2x"></i></Link>
           </Panel.Heading>
 
           <Panel.Collapse>
@@ -37,7 +39,7 @@ class UsersProfile extends Component {
           <Panel.Heading>
             <Panel.Toggle componentClass="a"><i className="fa fa-caret-down fa-3x"></i></Panel.Toggle>
             <Panel.Title>My Network</Panel.Title>
-            <Panel.Toggle componentClass="a"><i className="fa fa-user-plus fa-2x"></i></Panel.Toggle>
+            <Link to={`/users/${this.state.user.id}/mynetwork`}><i className="fa fa-user-plus fa-2x"></i></Link>
           </Panel.Heading>
           <Panel.Collapse>
             <Panel.Body>

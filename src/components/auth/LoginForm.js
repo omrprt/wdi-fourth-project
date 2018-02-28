@@ -25,7 +25,7 @@ const LoginForm = ({ handleChange, handleSubmit, user}) => {
           className="form-control"
         />
       </div>
-      <button className="main-button">Login</button>
+      <button className="btn">Login</button>
     </form>
   );
 };

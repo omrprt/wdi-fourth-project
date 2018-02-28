@@ -24,7 +24,6 @@ class Login extends React.Component {
     Axios
       .post('/api/login', this.state.user)
       .then(res => {
-        console.log(res);
         Auth.setToken(res.data.token);
         const id = Auth.getPayload().userId;
         this.props.history.push(`/users/${id}`);

@@ -13,6 +13,10 @@ const thoughtDiaryEntrySchema = new mongoose.Schema({
   timestamps: true
 });
 
+thoughtDiaryEntrySchema.methods.belongsTo = function logBelongsTo(user) {
+  return this.createdBy.id === user.id;
+};
+
 const userSchema = new mongoose.Schema({
   firstName: { type: String, required: 'Please your first name' },
   lastName: { type: String, required: 'Please include last Name' },
@@ -32,12 +36,6 @@ const userSchema = new mongoose.Schema({
   thoughtDiary: [ thoughtDiaryEntrySchema ],
   myCrisisPlan: { type: mongoose.Schema.ObjectId, ref: 'crisisPlan'}
 });
-
-
-
-thoughtDiaryEntrySchema.methods.belongsTo = function logBelongsTo(user) {
-  return this.createdBy.id === user.id;
-};
 
 userSchema.set('toJSON', {
   getters: true,

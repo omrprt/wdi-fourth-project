@@ -67,7 +67,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
         />
       </div>
 
-      <button  disabled={formIsInvalid} className="main-button">Register</button>
+      <button  disabled={formIsInvalid} className="btn">Register</button>
     </form>
   );
 };

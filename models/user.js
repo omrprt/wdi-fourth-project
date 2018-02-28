@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema({
     profession: {type: String},
     phoneNumber: {type: String}
   }],
-  mySupports: [{
+  myFamilyandFriends: [{
     Name: {type: String},
     relationship: {type: String},
     phoneNumber: {type: String}

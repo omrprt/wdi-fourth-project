@@ -14,3 +14,9 @@ form {
   width: 75%;
   margin: 10px auto 0;
 }
+
+.panel-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

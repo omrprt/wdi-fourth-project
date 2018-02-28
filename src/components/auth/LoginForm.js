@@ -6,6 +6,7 @@ const LoginForm = ({ handleChange, handleSubmit, user}) => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="form-group">
+        <strong>Email</strong>
         <input
           type="text"
           name="email"
@@ -15,7 +16,9 @@ const LoginForm = ({ handleChange, handleSubmit, user}) => {
           className="form-control"
         />
       </div>
+
       <div className="form-group">
+        <strong>Password</strong>
         <input
           type="password"
           name="password"

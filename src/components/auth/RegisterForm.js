@@ -5,6 +5,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="form-group">
+        <strong>First Name</strong>
         <input
           type="text"
           name="firstName"
@@ -16,6 +17,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
         { errors.firstName && <p>{errors.firstName}</p>}
       </div>
       <div className="form-group">
+        <strong>Last Name</strong>
         <input
           type="text"
           name="lastName"
@@ -26,6 +28,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
         />
       </div>
       <div className="form-group">
+        <strong>Username</strong>
         <input
           type="text"
           name="username"
@@ -37,6 +40,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
         { errors.firstname && <p>{errors.firstname}</p>}
       </div>
       <div className="form-group">
+        <strong>Email</strong>
         <input
           type="text"
           name="email"
@@ -47,6 +51,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
         />
       </div>
       <div className="form-group">
+        <strong>Password</strong>
         <input
           type="password"
           name="password"
@@ -57,6 +62,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
         />
       </div>
       <div className="form-group">
+        <strong>Password Confirmation</strong>
         <input
           type="password"
           name="passwordConfirmation"

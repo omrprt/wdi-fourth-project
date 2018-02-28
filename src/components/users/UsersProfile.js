@@ -19,20 +19,46 @@ class UsersProfile extends Component {
       <div>
         <h3>How are you feeling today { this.state.user.firstName}?</h3>
 
-        <Panel id="collapsible-panel-example-3" defaultExpanded>
+        <Panel >
           <Panel.Heading>
-            <Panel.Title>Title that functions as a collapse toggle</Panel.Title>
-            <Panel.Toggle componentClass="a">My own toggle</Panel.Toggle>
+            <Panel.Toggle componentClass="a"><i className="fa fa-caret-down fa-3x"></i></Panel.Toggle>
+            <Panel.Title>Thought Diary</Panel.Title>
+            <Panel.Toggle href="http://www.google.com"><i className="fa fa-edit fa-2x"></i></Panel.Toggle>
           </Panel.Heading>
+
           <Panel.Collapse>
             <Panel.Body>
-              Anim pariatur cliche reprehenderit, enim eiusmod high life
-              accusamus terry richardson ad squid. Nihil anim keffiyeh
-              helvetica, craft beer labore wes anderson cred nesciunt sapiente
-              ea proident.
+              Jane 594-3985
             </Panel.Body>
           </Panel.Collapse>
         </Panel>
+
+        <Panel >
+          <Panel.Heading>
+            <Panel.Toggle componentClass="a"><i className="fa fa-caret-down fa-3x"></i></Panel.Toggle>
+            <Panel.Title>My Network</Panel.Title>
+            <Panel.Toggle componentClass="a"><i className="fa fa-user-plus fa-2x"></i></Panel.Toggle>
+          </Panel.Heading>
+          <Panel.Collapse>
+            <Panel.Body>
+              Jane 594-3985
+            </Panel.Body>
+          </Panel.Collapse>
+        </Panel>
+
+        <Panel  >
+          <Panel.Heading>
+            <Panel.Toggle componentClass="a"><i className="fa fa-caret-down fa-3x"></i></Panel.Toggle>
+            <Panel.Title>My Plans</Panel.Title>
+
+          </Panel.Heading>
+          <Panel.Collapse>
+            <Panel.Body>
+              Jane 594-3985
+            </Panel.Body>
+          </Panel.Collapse>
+        </Panel>
+
       </div>
     );
   }

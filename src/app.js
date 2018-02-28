@@ -9,6 +9,7 @@ import Login       from './components/auth/Login';
 import Register    from './components/auth/Register';
 
 import 'bootstrap-css-only';
+import 'font-awesome/css/font-awesome.css';
 import './scss/style.scss';
 
 class App extends Component {

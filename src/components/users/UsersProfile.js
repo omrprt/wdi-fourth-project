@@ -61,6 +61,16 @@ class UsersProfile extends Component {
                   </li>
                 )}
               </ul>
+
+              <ul>
+                {this.state.user.myOrganizations && this.state.user.myOrganizations.map((myOrganizations, index) =>
+                  <li key={index}>
+                    {myOrganizations.name}
+                    {myOrganizations.url}
+                    {myOrganizations.phoneNumber}
+                  </li>
+                )}
+              </ul>
             </Panel.Body>
           </Panel.Collapse>
         </Panel>

@@ -24,13 +24,18 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: 'Please enter a different email.' },
   password: { type: String, required: true },
   myProfessionals: [{
-    name: {type: String, required: true},
+    name: {type: String, required: 'Please include a name'},
     profession: {type: String, required: 'Include their profession'},
     phoneNumber: {type: String, required: 'Include their contact number'}
   }],
   myFamilyandFriends: [{
-    name: {type: String},
+    name: {type: String, required: 'Please include a name' },
     relationship: {type: String},
+    phoneNumber: {type: String}
+  }],
+  myOrganizations: [{
+    name: {type: String, required: 'Please include a name'},
+    url: {type: String},
     phoneNumber: {type: String}
   }],
   thoughtDiary: [ thoughtDiaryEntrySchema ],

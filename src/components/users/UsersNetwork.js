@@ -3,9 +3,9 @@ import Axios from 'axios';
 import Auth from '../../lib/Auth';
 import { PanelGroup, Panel } from 'react-bootstrap';
 
-import UsersNewProfessional from './UsersNewProfessional';
 import UsersNewFamilyandFriends from './UsersNewFamilyandFriends';
-
+import UsersNewProfessional from './UsersNewProfessional';
+import UsersNewOrganization from './UsersNewOrganization';
 
 class UsersNetwork extends Component {
 
@@ -24,7 +24,15 @@ class UsersNetwork extends Component {
           relationship: '',
           phoneNumber: ''
         }
-      ]},
+      ],
+      myOrganizations: [
+        {
+          name: '',
+          url: '',
+          phoneNumber: ''
+        }
+      ]
+    },
 
     newProfessional: {
       name: '',
@@ -38,6 +46,12 @@ class UsersNetwork extends Component {
       phoneNumber: ''
     },
 
+    newOrganization: {
+      name: '',
+      url: '',
+      phoneNumber: ''
+    },
+
     errors: {}
   }
 
@@ -48,6 +62,7 @@ class UsersNetwork extends Component {
         const newState = prevState;
         newState.user.myProfessionals = res.data.myProfessionals;
         newState.user.myFamilyandFriends = res.data.myFamilyandFriends;
+        newState.user.myOrganizations = res.data.myOrganizations;
         return newState;
       }, () => console.log(this.state)))
       .catch(err => console.log(err));
@@ -92,6 +107,7 @@ class UsersNetwork extends Component {
     }, () => console.log(this.state));
   }
 
+
   familyAndFriendsSubmit = (e) => {
     e.preventDefault();
     Axios
@@ -113,9 +129,40 @@ class UsersNetwork extends Component {
       .catch(err => console.log(err));
   }
 
+  organizationChange = ({ target: { name, value } }) => {
+    const newOrganization = Object.assign({}, this.state.newOrganization, { [name]: value });
+    this.setState(prevState => {
+      const newState = prevState;
+      newState.newOrganization = newOrganization;
+      return newState;
+    }, () => console.log(this.state));
+  }
+
+  organizationSubmit = (e) => {
+    e.preventDefault();
+    Axios
+      .post(`/api/users/${this.props.match.params.id}/organizations`, this.state.newOrganization, { headers: { 'Authorization': `Bearer ${Auth.getToken()}` } })
+      .then((res) => {
+        this.setState(prevState => {
+          console.log(prevState);
+          const newState = prevState;
+
+          newState.user = res.data;
+          newState.newOrganization = {
+            name: '',
+            url: '',
+            phoneNumber: ''
+          };
+          return newState;
+        }, () => console.log(this.state));
+      })
+      .catch(err => console.log(err));
+  }
+
   render() {
     return(
       <div>
+
         <p>in network page</p>
         <PanelGroup accordion id="accordion-example">
           <Panel eventKey="1">
@@ -129,6 +176,7 @@ class UsersNetwork extends Component {
                 familyAndFriendsSubmit={this.familyAndFriendsSubmit}
                 errors={this.state.errors}
               />
+
             </Panel.Body>
           </Panel>
           <Panel eventKey="2">
@@ -150,7 +198,12 @@ class UsersNetwork extends Component {
               <Panel.Title toggle>Add an Organization</Panel.Title>
             </Panel.Heading>
             <Panel.Body collapsible>
-              filler
+              <UsersNewOrganization
+                newOrganization={this.state.newOrganization}
+                organizationChange={this.organizationChange}
+                organizationSubmit={this.organizationSubmit}
+                errors={this.state.errors}
+              />
             </Panel.Body>
           </Panel>
         </PanelGroup>
@@ -170,6 +223,16 @@ class UsersNetwork extends Component {
               {myFamilyandFriends.name}
               {myFamilyandFriends.relationship}
               {myFamilyandFriends.phoneNumber}
+            </li>
+          )}
+        </ul>
+
+        <ul>
+          {this.state.user.myOrganizations.map((myOrganizations, index) =>
+            <li key={index}>
+              {myOrganizations.name}
+              {myOrganizations.url}
+              {myOrganizations.phoneNumber}
             </li>
           )}
         </ul>

@@ -6,11 +6,14 @@ router.route('/users/:id')
   .get(users.show)
   .put(users.update);
 
+router.route('/users/:id/familyandfriends')
+  .post(users.addFamilyandFriends);
+
 router.route('/users/:id/professionals')
   .post(users.addProfessional);
 
-router.route('/users/:id/familyandfriends')
-  .post(users.addFamilyandFriends);
+router.route('/users/:id/organizations')
+  .post(users.addOrganization);
 
 router.route('/register')
   .post(auth.register);

@@ -3,8 +3,10 @@ const bcrypt = require('bcrypt');
 
 const thoughtDiaryEntrySchema = new mongoose.Schema({
   situation: {type: String},
-  feeling: {type: String, required: true},
-  moodRating: {type: Number, required: true},
+  emotion: [{
+    name: {type: String, required: 'Please include a name' },
+    rating: {type: String}
+  }],
   thought: {type: String, required: true},
   evidenceFor: {type: String, required: true},
   evidenceAgainst: {type: String, required: true},
@@ -38,8 +40,13 @@ const userSchema = new mongoose.Schema({
     url: {type: String},
     phoneNumber: {type: String}
   }],
-  thoughtDiary: [ thoughtDiaryEntrySchema ],
   myCrisisPlan: { type: mongoose.Schema.ObjectId, ref: 'crisisPlan'}
+});
+
+userSchema.virtual('diaries', {
+  ref: 'Diary',
+  localField: '_id', // use the _id field from this schema
+  foreignField: 'createdBy' // to match up with the createdBy field in the Post schema
 });
 
 userSchema.set('toJSON', {

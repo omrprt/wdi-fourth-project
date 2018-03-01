@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const users = require('../controllers/users');
 const auth  = require('../controllers/auth');
+// const secureRoute = require('../lib/secureRoute');
 
 router.route('/users/:id')
   .get(users.show)

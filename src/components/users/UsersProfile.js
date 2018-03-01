@@ -24,7 +24,7 @@ class UsersProfile extends Component {
           <Panel.Heading>
             <Panel.Toggle componentClass="a"><i className="fa fa-caret-down fa-3x"></i></Panel.Toggle>
             <Panel.Title>Thought Diary</Panel.Title>
-            <Link to="myNetwork">  <i className="fa fa-edit fa-2x"></i></Link>
+            <Link to={'/diary'}>  <i className="fa fa-edit fa-2x"></i></Link>
           </Panel.Heading>
 
           <Panel.Collapse>
@@ -87,6 +87,7 @@ class UsersProfile extends Component {
             </Panel.Body>
           </Panel.Collapse>
         </Panel>
+
 
       </div>
     );

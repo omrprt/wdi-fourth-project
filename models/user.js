@@ -24,9 +24,9 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: 'Please enter a different email.' },
   password: { type: String, required: true },
   myProfessionals: [{
-    name: {type: String},
-    profession: {type: String},
-    phoneNumber: {type: String}
+    name: {type: String, required: true},
+    profession: {type: String, required: 'Include their profession'},
+    phoneNumber: {type: String, required: 'Include their contact number'}
   }],
   myFamilyandFriends: [{
     Name: {type: String},
@@ -54,7 +54,7 @@ userSchema
   });
 
 userSchema.pre('validate', function checkPassword(next) {
-  if(!this._passwordConfirmation || this._passwordConfirmation !== this.password) {
+  if(this.isModified('password') && (!this._passwordConfirmation || this._passwordConfirmation !== this.password)) {
     this.invalidate('passwordConfirmation', 'Passwords do not match');
   }
   next();

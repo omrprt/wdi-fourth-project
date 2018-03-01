@@ -3,6 +3,8 @@ import Axios from 'axios';
 import Auth from '../../lib/Auth';
 import { PanelGroup, Panel } from 'react-bootstrap';
 
+import UsersNewProfessional from './UsersNewProfessional';
+
 
 class UsersNetwork extends Component {
   state = {
@@ -24,6 +26,11 @@ class UsersNetwork extends Component {
       newProfessional: {
         name: '',
         profession: '',
+        phoneNumber: ''
+      },
+      newFamilyandFriends: {
+        name: '',
+        relationship: '',
         phoneNumber: ''
       },
       errors: {}
@@ -52,10 +59,10 @@ class UsersNetwork extends Component {
 
   }
 
-  handleSubmit = (e) => {
+  professionalSubmit = (e) => {
     e.preventDefault();
     Axios
-      .put(`/api/users/${this.props.match.params.id}`, this.state.user.newProfessional, { headers: { 'Authorization': `Bearer ${Auth.getToken()}` } })
+      .post(`/api/users/${this.props.match.params.id}/professionals`, this.state.user.newProfessional, { headers: { 'Authorization': `Bearer ${Auth.getToken()}` } })
       .then((res) => {
         this.setState(prevState => {
           console.log(prevState);
@@ -85,15 +92,7 @@ class UsersNetwork extends Component {
               <Panel.Title toggle>Add a Family or Friend</Panel.Title>
             </Panel.Heading>
             <Panel.Body collapsible>
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-              richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard
-              dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
-              moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
-              assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
-              wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
-              butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-              aesthetic synth nesciunt you probably haven't heard of them accusamus
-              labore sustainable VHS.
+
             </Panel.Body>
           </Panel>
           <Panel eventKey="2">
@@ -101,45 +100,13 @@ class UsersNetwork extends Component {
               <Panel.Title toggle>Add a Professional</Panel.Title>
             </Panel.Heading>
             <Panel.Body collapsible>
-      
-              <form onSubmit={this.handleSubmit}>
-                <div className="form-group">
-                  <strong>Professional&#39;s Name</strong>
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Professional's Name"
-                    onChange={this.handleChange}
-                    value={this.state.user.newProfessional.name}
-                    className="form-control"
-                  />
-                </div>
+              <UsersNewProfessional
+                user={this.state.user}
+                handleChange={this.handleChange}
+                professionalSubmit={this.professionalSubmit}
+                errors={this.state.errors}
+              />
 
-                <div className="form-group">
-                  <strong>Professional&#39;s Title</strong>
-                  <input
-                    type="text"
-                    name="profession"
-                    placeholder="Professional&#39;s TitlePassword"
-                    onChange={this.handleChange}
-                    value={this.state.user.newProfessional.profession}
-                    className="form-control"
-                  />
-                </div>
-
-                <div className="form-group">
-                  <strong>Phone Number</strong>
-                  <input
-                    type="tel"
-                    name="phoneNumber"
-                    placeholder="Phone Number"
-                    onChange={this.handleChange}
-                    value={this.state.user.newProfessional.phoneNumber}
-                    className="form-control"
-                  />
-                </div>
-                <button className="btn">Add Professional</button>
-              </form>
             </Panel.Body>
           </Panel>
           <Panel eventKey="3">
@@ -151,18 +118,6 @@ class UsersNetwork extends Component {
             </Panel.Body>
           </Panel>
         </PanelGroup>
-
-
-
-
-
-
-
-
-
-
-
-
 
         <ul>
           {this.state.user.myProfessionals.map((myProfessional, index) =>

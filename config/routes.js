@@ -6,6 +6,9 @@ router.route('/users/:id')
   .get(users.show)
   .put(users.update);
 
+router.route('/users/:id/professionals')
+  .post(users.addProfessional);
+
 router.route('/register')
   .post(auth.register);
 

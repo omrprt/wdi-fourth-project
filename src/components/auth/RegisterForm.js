@@ -26,6 +26,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
           value={user.lastName}
           className="form-control"
         />
+        { errors.lastName && <p>{errors.lastName}</p>}
       </div>
       <div className="form-group">
         <strong>Username</strong>
@@ -37,7 +38,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
           value={user.username}
           className="form-control"
         />
-        { errors.firstname && <p>{errors.firstname}</p>}
+        { errors.username && <p>{errors.username}</p>}
       </div>
       <div className="form-group">
         <strong>Email</strong>
@@ -49,6 +50,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
           value={user.email}
           className="form-control"
         />
+        { errors.email && <p>{errors.email}</p>}
       </div>
       <div className="form-group">
         <strong>Password</strong>
@@ -60,6 +62,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
           value={user.password}
           className="form-control"
         />
+        { errors.password && <p>{errors.password}</p>}
       </div>
       <div className="form-group">
         <strong>Password Confirmation</strong>
@@ -71,6 +74,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
           value={user.passwordConfirmation}
           className="form-control"
         />
+        { errors.passwordConfirmation && <p>{errors.passwordConfirmation}</p>}
       </div>
 
       <button  disabled={formIsInvalid} className="btn">Register</button>

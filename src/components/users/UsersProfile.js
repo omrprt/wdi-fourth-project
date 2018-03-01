@@ -29,7 +29,13 @@ class UsersProfile extends Component {
 
           <Panel.Collapse>
             <Panel.Body>
-              Jane 594-3985
+              <ul>
+                {this.state.user.diaries && this.state.user.diaries.map((diary, index) =>
+                  <li key={index}>
+                    {diary.title}
+                  </li>
+                )}
+              </ul>
             </Panel.Body>
           </Panel.Collapse>
         </Panel>
@@ -37,7 +43,7 @@ class UsersProfile extends Component {
         <Panel >
           <Panel.Heading>
             <Panel.Toggle componentClass="a"><i className="fa fa-caret-down fa-3x"></i></Panel.Toggle>
-            <Panel.Title>My Network</Panel.Title>
+            <Panel.Title>My Support Network</Panel.Title>
             <Link to={`/users/${this.state.user.id}/mynetwork`}><i className="fa fa-user-plus fa-2x"></i></Link>
           </Panel.Heading>
           <Panel.Collapse>

@@ -1,7 +1,7 @@
 const Diary = require('../models/diary');
 
 function createDiary(req, res, next) {
-  req.body.createdBy = req.user;
+  req.body.createdBy = req.currentUser;
 
   Diary
     .create(req.body)

@@ -10,7 +10,7 @@ const diarySchema = new mongoose.Schema({
   thought: {type: String, required: true},
   evidenceFor: {type: String, required: true},
   evidenceAgainst: {type: String, required: true},
-  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' }
 }, {
   timestamps: true
 });

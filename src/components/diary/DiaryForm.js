@@ -9,7 +9,7 @@ class Diary extends Component {
       situation: '',
       emotion: [{
         feeling: '',
-        rating: ''
+        rating: '0'
       }],
       thought: '',
       evidenceFor: '',
@@ -21,7 +21,7 @@ class Diary extends Component {
       situation: '',
       emotion: [{
         feeling: '',
-        rating: ''
+        rating: '0'
       }],
       thought: '',
       evidenceFor: '',
@@ -39,6 +39,13 @@ class Diary extends Component {
       newState.newDiary = newDiary;
       return newState;
     }, () => console.log('here', this.state));
+  }
+
+  handleEmotionChange = ({ target: { name, value }}) => {
+    const emotion = Object.assign({}, this.state.newDiary.emotion[0], { [name]: value });
+
+    const newDiary = Object.assign({}, this.state.newDiary, { emotion: [emotion]});
+    this.setState({ newDiary });
   }
 
   diarySubmit = (e) => {
@@ -72,7 +79,7 @@ class Diary extends Component {
     return(
       <div>
           IN THOUGHT DIARY!!!
-        <form onSubmit={this.state.diarySubmit}>
+        <form onSubmit={this.diarySubmit}>
 
           <div className="form-group">
             <strong>Diary&#39;s Name</strong>
@@ -104,22 +111,26 @@ class Diary extends Component {
               type="text"
               name="feeling"
               placeholder="Name the Feeling"
-              onChange={this.diaryChange}
+              onChange={this.handleEmotionChange}
               value={this.state.newDiary.emotion.feeling}
               className="form-control"
             />
           </div>
 
           <div className="form-group">
+    
             <strong>Rating 0-10</strong>
             <input
-              type="tel"
+              type="range"
+              min="0"
+              max="10"
               name="rating"
               placeholder="Rating"
-              onChange={this.diaryChange}
-              value={this.state.newDiary.emotion.rating}
+              onChange={this.handleEmotionChange}
+              value={this.state.newDiary.emotion[0].rating}
               className="form-control"
             />
+            <p>{ this.state.newDiary.emotion[0].rating }</p>
           </div>
 
           <div className="form-group">
@@ -160,6 +171,14 @@ class Diary extends Component {
 
           <button className="btn">Add Diary</button>
         </form>
+
+        {/* <ul>
+          {this.diaryChange.map((diary, index) =>
+            <li key={index}>
+              {diary.title}
+            </li>
+          )}
+        </ul> */}
       </div>
     );
   }

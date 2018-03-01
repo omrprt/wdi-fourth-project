@@ -9,6 +9,9 @@ router.route('/users/:id')
 router.route('/users/:id/professionals')
   .post(users.addProfessional);
 
+router.route('/users/:id/familyandfriends')
+  .post(users.addFamilyandFriends);
+
 router.route('/register')
   .post(auth.register);
 

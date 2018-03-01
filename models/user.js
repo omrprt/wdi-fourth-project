@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
     phoneNumber: {type: String, required: 'Include their contact number'}
   }],
   myFamilyandFriends: [{
-    Name: {type: String},
+    name: {type: String},
     relationship: {type: String},
     phoneNumber: {type: String}
   }],

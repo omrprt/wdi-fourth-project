@@ -4,9 +4,11 @@ import Auth from '../../lib/Auth';
 import { PanelGroup, Panel } from 'react-bootstrap';
 
 import UsersNewProfessional from './UsersNewProfessional';
+import UsersNewFamilyandFriends from './UsersNewFamilyandFriends';
 
 
 class UsersNetwork extends Component {
+
   state = {
     user: {
       myProfessionals: [
@@ -22,19 +24,21 @@ class UsersNetwork extends Component {
           relationship: '',
           phoneNumber: ''
         }
-      ],
-      newProfessional: {
-        name: '',
-        profession: '',
-        phoneNumber: ''
-      },
-      newFamilyandFriends: {
-        name: '',
-        relationship: '',
-        phoneNumber: ''
-      },
-      errors: {}
-    }
+      ]},
+
+    newProfessional: {
+      name: '',
+      profession: '',
+      phoneNumber: ''
+    },
+
+    newFamilyAndFriends: {
+      name: '',
+      relationship: '',
+      phoneNumber: ''
+    },
+
+    errors: {}
   }
 
   componentDidMount() {
@@ -49,27 +53,26 @@ class UsersNetwork extends Component {
       .catch(err => console.log(err));
   }
 
-  handleChange = ({ target: { name, value } }) => {
-    const newProfessional = Object.assign({}, this.state.user.newProfessional, { [name]: value });
+  professionalChange = ({ target: { name, value } }) => {
+    const newProfessional = Object.assign({}, this.state.newProfessional, { [name]: value });
     this.setState(prevState => {
       const newState = prevState;
-      newState.user.newProfessional = newProfessional;
+      newState.newProfessional = newProfessional;
       return newState;
     }, () => console.log(this.state));
-
   }
 
   professionalSubmit = (e) => {
     e.preventDefault();
     Axios
-      .post(`/api/users/${this.props.match.params.id}/professionals`, this.state.user.newProfessional, { headers: { 'Authorization': `Bearer ${Auth.getToken()}` } })
+      .post(`/api/users/${this.props.match.params.id}/professionals`, this.state.newProfessional, { headers: { 'Authorization': `Bearer ${Auth.getToken()}` } })
       .then((res) => {
         this.setState(prevState => {
           console.log(prevState);
           const newState = prevState;
 
           newState.user = res.data;
-          newState.user.newProfessional = {
+          newState.newProfessional = {
             name: '',
             profession: '',
             phoneNumber: ''
@@ -78,21 +81,54 @@ class UsersNetwork extends Component {
         }, () => console.log(this.state));
       })
       .catch(err => console.log(err));
+  }
 
+  familyAndFriendsChange = ({ target: { name, value } }) => {
+    const newFamilyAndFriends = Object.assign({}, this.state.newFamilyAndFriends, { [name]: value });
+    this.setState(prevState => {
+      const newState = prevState;
+      newState.newFamilyAndFriends = newFamilyAndFriends;
+      return newState;
+    }, () => console.log(this.state));
+  }
+
+  familyAndFriendsSubmit = (e) => {
+    e.preventDefault();
+    Axios
+      .post(`/api/users/${this.props.match.params.id}/familyandfriends`, this.state.newFamilyAndFriends, { headers: { 'Authorization': `Bearer ${Auth.getToken()}` } })
+      .then((res) => {
+        this.setState(prevState => {
+          console.log(prevState);
+          const newState = prevState;
+
+          newState.user = res.data;
+          newState.newFamilyAndFriends = {
+            name: '',
+            relationship: '',
+            phoneNumber: ''
+          };
+          return newState;
+        }, () => console.log(this.state));
+      })
+      .catch(err => console.log(err));
   }
 
   render() {
     return(
       <div>
         <p>in network page</p>
-
         <PanelGroup accordion id="accordion-example">
           <Panel eventKey="1">
             <Panel.Heading>
               <Panel.Title toggle>Add a Family or Friend</Panel.Title>
             </Panel.Heading>
             <Panel.Body collapsible>
-
+              <UsersNewFamilyandFriends
+                newFamilyAndFriends={this.state.newFamilyAndFriends}
+                familyAndFriendsChange={this.familyAndFriendsChange}
+                familyAndFriendsSubmit={this.familyAndFriendsSubmit}
+                errors={this.state.errors}
+              />
             </Panel.Body>
           </Panel>
           <Panel eventKey="2">
@@ -101,8 +137,8 @@ class UsersNetwork extends Component {
             </Panel.Heading>
             <Panel.Body collapsible>
               <UsersNewProfessional
-                user={this.state.user}
-                handleChange={this.handleChange}
+                newProfessional={this.state.newProfessional}
+                professionalChange={this.professionalChange}
                 professionalSubmit={this.professionalSubmit}
                 errors={this.state.errors}
               />
@@ -125,6 +161,15 @@ class UsersNetwork extends Component {
               {myProfessional.name}
               {myProfessional.profession}
               {myProfessional.phoneNumber}
+            </li>
+          )}
+        </ul>
+        <ul>
+          {this.state.user.myFamilyandFriends.map((myFamilyandFriends, index) =>
+            <li key={index}>
+              {myFamilyandFriends.name}
+              {myFamilyandFriends.relationship}
+              {myFamilyandFriends.phoneNumber}
             </li>
           )}
         </ul>

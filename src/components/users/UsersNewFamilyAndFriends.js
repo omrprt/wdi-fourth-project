@@ -1,29 +1,29 @@
 import React from 'react';
 
-const UsersNewProfessional = ({ professionalChange, professionalSubmit, newProfessional }) => {
+const UsersNewFamilyandFriends = ({ familyAndFriendsChange, familyAndFriendsSubmit, newFamilyAndFriends }) => {
   // const formIsInvalid = Object.keys(errors).some(key => errors[key]);
   return (
-    <form onSubmit={professionalSubmit}>
+    <form onSubmit={familyAndFriendsSubmit}>
       <div className="form-group">
-        <strong>Professional&#39;s Name</strong>
+        <strong>Family or Friend&#39;s Name</strong>
         <input
           type="text"
           name="name"
-          placeholder="Professional's Name"
-          onChange={professionalChange}
-          value={newProfessional.name}
+          placeholder="name"
+          onChange={familyAndFriendsChange}
+          value={newFamilyAndFriends.name}
           className="form-control"
         />
       </div>
 
       <div className="form-group">
-        <strong>Professional&#39;s Title</strong>
+        <strong>Relationship to You</strong>
         <input
           type="text"
-          name="profession"
-          placeholder="Professional&#39;s Title"
-          onChange={professionalChange}
-          value={newProfessional.profession}
+          name="relationship"
+          placeholder="Relationship to you"
+          onChange={familyAndFriendsChange}
+          value={newFamilyAndFriends.relationship}
           className="form-control"
         />
       </div>
@@ -34,8 +34,8 @@ const UsersNewProfessional = ({ professionalChange, professionalSubmit, newProfe
           type="tel"
           name="phoneNumber"
           placeholder="Phone Number"
-          onChange={professionalChange}
-          value={newProfessional.phoneNumber}
+          onChange={familyAndFriendsChange}
+          value={newFamilyAndFriends.phoneNumber}
           className="form-control"
         />
       </div>
@@ -44,4 +44,4 @@ const UsersNewProfessional = ({ professionalChange, professionalSubmit, newProfe
   );
 };
 
-export default UsersNewProfessional;
+export default UsersNewFamilyandFriends;

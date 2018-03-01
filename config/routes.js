@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const users = require('../controllers/users');
 const auth  = require('../controllers/auth');
+const diary = require('../controllers/diary');
 // const secureRoute = require('../lib/secureRoute');
 
 router.route('/users/:id')
@@ -15,6 +16,9 @@ router.route('/users/:id/professionals')
 
 router.route('/users/:id/organizations')
   .post(users.addOrganization);
+
+router.route('/diary')
+  .post(diary.create);
 
 router.route('/register')
   .post(auth.register);

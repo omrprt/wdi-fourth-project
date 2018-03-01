@@ -33,11 +33,12 @@ class Diary extends Component {
 
   diaryChange = ({ target: { name, value } }) => {
     const newDiary = Object.assign({}, this.state.newDiary, { [name]: value });
+
     this.setState(prevState => {
       const newState = prevState;
       newState.newDiary = newDiary;
       return newState;
-    }, () => console.log(this.state));
+    }, () => console.log('here', this.state));
   }
 
   diarySubmit = (e) => {
@@ -70,7 +71,7 @@ class Diary extends Component {
   render() {
     return(
       <div>
-          IN DIARY!!!
+          IN THOUGHT DIARY!!!
         <form onSubmit={this.state.diarySubmit}>
 
           <div className="form-group">
@@ -79,19 +80,19 @@ class Diary extends Component {
               type="text"
               name="title"
               placeholder="Diary's Name"
-              onChange={this.state.diaryChange}
+              onChange={this.diaryChange}
               value={this.state.newDiary.title}
               className="form-control"
             />
           </div>
 
           <div className="form-group">
-            <strong>Diary&#39;s Name</strong>
+            <strong>Situation</strong>
             <input
               type="text"
               name="situation"
-              placeholder="Diary's Name"
-              onChange={this.state.diaryChange}
+              placeholder="Situation Description"
+              onChange={this.diaryChange}
               value={this.state.newDiary.situation}
               className="form-control"
             />
@@ -102,24 +103,61 @@ class Diary extends Component {
             <input
               type="text"
               name="feeling"
-              placeholder="Diary&#39;s Title"
-              onChange={this.state.diaryChange}
-              value={this.state.newDiary.url}
+              placeholder="Name the Feeling"
+              onChange={this.diaryChange}
+              value={this.state.newDiary.emotion.feeling}
               className="form-control"
             />
           </div>
 
           <div className="form-group">
-            <strong>Phone Number</strong>
+            <strong>Rating 0-10</strong>
             <input
               type="tel"
-              name="phoneNumber"
-              placeholder="Phone Number"
-              onChange={this.state.diaryChange}
-              value={this.state.newDiary.phoneNumber}
+              name="rating"
+              placeholder="Rating"
+              onChange={this.diaryChange}
+              value={this.state.newDiary.emotion.rating}
               className="form-control"
             />
           </div>
+
+          <div className="form-group">
+            <strong>What was your thought?</strong>
+            <input
+              type="tel"
+              name="thought"
+              placeholder="What was your thought?"
+              onChange={this.diaryChange}
+              value={this.state.newDiary.thought}
+              className="form-control"
+            />
+          </div>
+
+          <div className="form-group">
+            <strong>What is the evidence to support that thought?</strong>
+            <input
+              type="tel"
+              name="evidenceFor"
+              placeholder="Evidence Supporting supporting your thought"
+              onChange={this.diaryChange}
+              value={this.state.newDiary.evidenceFor}
+              className="form-control"
+            />
+          </div>
+
+          <div className="form-group">
+            <strong>What is the evidence against that thought? </strong>
+            <input
+              type="tel"
+              name="evidenceAgainst"
+              placeholder="Evidence against that thought"
+              onChange={this.diaryChange}
+              value={this.state.newDiary.evidenceAgainst}
+              className="form-control"
+            />
+          </div>
+
           <button className="btn">Add Diary</button>
         </form>
       </div>

@@ -33,6 +33,8 @@ class Diary extends Component {
     errors: {}
   }
 
+
+
   diaryChange = ({ target: { name, value } }) => {
     const newDiary = Object.assign({}, this.state.newDiary, { [name]: value });
 
@@ -190,13 +192,6 @@ class Diary extends Component {
           <button className="btn">Add Diary</button>
         </form>
 
-        {/* <ul>
-          {this.diaryChange.map((diary, index) =>
-          <li key={index}>
-          {diary.title}
-        </li>
-      )}
-    </ul> */}
       </div>
     );
   }

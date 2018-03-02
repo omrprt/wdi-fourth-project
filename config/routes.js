@@ -2,6 +2,7 @@ const router = require('express').Router();
 const users = require('../controllers/users');
 const auth  = require('../controllers/auth');
 const diary = require('../controllers/diary');
+const crisisPlan = require('../controllers/crisisPlan');
 const secureRoute = require('../lib/secureRoute');
 
 router.route('/users/:id')
@@ -17,7 +18,7 @@ router.route('/users/:id/professionals')
 router.route('/users/:id/organizations')
   .post(users.addOrganization);
 
-router.route('/diary')
+router.route('/diaries')
   .post(secureRoute, diary.create);
 
 router.route('/diaries/:id')
@@ -31,6 +32,11 @@ router.route('/register')
 router.route('/login')
   .post(auth.login);
 
+router.route('/crisisPlan')
+  .get(secureRoute, crisisPlan.getAnyPlan);
+
+router.route('/crisisPlan/:id')
+  .get(secureRoute, crisisPlan.getSpecificPlan)
 
 router.all('/*', (req, res) => res.notFound());
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-import { Panel } from 'react-bootstrap';
+import { Panel, Grid, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Auth from '../../lib/Auth';
 
@@ -13,7 +13,6 @@ class UsersProfile extends Component {
     Axios
       .get(`/api/users/${Auth.getPayload().userId}`)
       .then(res => this.setState({ user: res.data }, () => console.log(this.state)));
-    console.log(this.state.user);
   }
 
   render() {
@@ -25,7 +24,7 @@ class UsersProfile extends Component {
           <Panel.Heading>
             <Panel.Toggle componentClass="a"><i className="fa fa-caret-down fa-3x"></i></Panel.Toggle>
             <Panel.Title>Thought Diary</Panel.Title>
-            <Link to={'/diary'}>  <i className="fa fa-edit fa-2x"></i></Link>
+            <Link to={'/diaries'}>  <i className="fa fa-edit fa-2x"></i></Link>
           </Panel.Heading>
 
           <Panel.Collapse>
@@ -33,7 +32,7 @@ class UsersProfile extends Component {
               <ul>
                 {this.state.user.diaries && this.state.user.diaries.map((diary, index) =>
                   <li key={index}>
-                    <Link to={`/diary/${diary._id}`}>{diary.title}</Link>
+                    <Link to={`/diaries/${diary._id}`}>{diary.title}</Link>
                   </li>
                 )}
               </ul>
@@ -49,25 +48,48 @@ class UsersProfile extends Component {
           </Panel.Heading>
           <Panel.Collapse>
             <Panel.Body>
-              <ul>
-                {this.state.user.myFamilyandFriends && this.state.user.myFamilyandFriends.map((myFamilyandFriend, index) =>
-                  <li key={index}>
-                    {myFamilyandFriend.name}
-                    {myFamilyandFriend.relationship}
-                    {myFamilyandFriend.phoneNumber}
-                  </li>
-                )}
-              </ul>
 
-              <ul>
-                {this.state.user.myProfessionals && this.state.user.myProfessionals.map((myProfessional, index) =>
-                  <li key={index}>
-                    {myProfessional.name}
-                    {myProfessional.profession}
-                    {myProfessional.phoneNumber}
-                  </li>
+              <Grid>
+                <h3>My Friends and Family Support</h3>
+                {this.state.user.myFamilyandFriends && this.state.user.myFamilyandFriends.map((myFamilyandFriend, index) =>
+                  <div key={index}>
+                    <Row className="show-grid">
+                      <Col xs={4} md={4}>
+                        {myFamilyandFriend.name}
+                      </Col>
+                      <Col xs={4} md={4}>
+                        {myFamilyandFriend.relationship}
+                      </Col>
+                      <Col xs={4} md={4}>
+                        {myFamilyandFriend.phoneNumber}
+                      </Col>
+                    </Row>
+                  </div>
                 )}
-              </ul>
+              </Grid>
+
+
+              <Grid>
+                <h3>My Professional Support</h3>
+                {this.state.user.myProfessionals && this.state.user.myProfessionals.map((myProfessional, index) =>
+                  <div key={index}>
+                    <Row className="show-grid">
+                      <Col xs={4} md={4}>
+                        {myProfessional.name}
+                      </Col>
+                      <Col xs={4} md={4}>
+                        {myProfessional.profession}
+                      </Col>
+                      <Col xs={4} md={4}>
+                        {myProfessional.phoneNumber}
+                      </Col>
+                    </Row>
+                  </div>
+                )}
+              </Grid>
+
+
+      
 
               <ul>
                 {this.state.user.myOrganizations && this.state.user.myOrganizations.map((myOrganizations, index) =>
@@ -86,7 +108,7 @@ class UsersProfile extends Component {
           <Panel.Heading>
             <Panel.Toggle componentClass="a"><i className="fa fa-caret-down fa-3x"></i></Panel.Toggle>
             <Panel.Title>My Plans</Panel.Title>
-
+            <Link to={'/myplans'}>  <i className="fa fa-book fa-2x"></i></Link>
           </Panel.Heading>
           <Panel.Collapse>
             <Panel.Body>

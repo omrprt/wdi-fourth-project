@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 
-class CrisisPlan extends Component {
+class CrisisPlanForm extends Component {
   state = {
-    CrisisPlan: []
+    CrisisPlan:
   }
 
   render() {
@@ -15,4 +15,4 @@ class CrisisPlan extends Component {
   }
 }
 
-export default CrisisPLan;
+export default CrisisPLanForm;

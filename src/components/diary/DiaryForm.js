@@ -114,7 +114,7 @@ class Diary extends Component {
                   <strong>Feeling</strong>
                   <input
                     type="text"
-                    name="feeling"
+                    name="emotion.feeling"
                     placeholder="Feeling"
                     onChange={this.handleEmotionChange}
                     value={this.state.newDiary.emotion.feeling}
@@ -128,7 +128,7 @@ class Diary extends Component {
                   <strong>0(mild)-10(intense)</strong>
 
                   <select
-                    name="rating"
+                    name="emotion.rating"
                     onChange={this.handleEmotionChange}
                     value={this.state.newDiary.emotion[0].rating}>
 

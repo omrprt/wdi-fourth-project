@@ -21,8 +21,21 @@ class DiaryShow extends Component {
             { Auth.getPayload().userId === this.state.diary.createdBy.id ?
               (
                 <div>
-                  <p>This is the diary</p>,
+                  <p>This is the diary</p>
                   <p>{this.state.diary.title}</p>
+                  <p>{this.state.diary.situation}</p>
+                  <ul>
+                    {this.state.diary.emotion.map((emotion, index) =>
+                      <li key={index}>
+                        <p>{emotion.feeling}</p>
+                        <p>{emotion.rating}</p>
+                      </li>
+                    )}
+                  </ul>
+                  <p>{this.state.diary.thought}</p>
+                  <p>{this.state.diary.evidenceFor}</p>
+                  <p>{this.state.diary.evidenceAgainst}</p>
+
                 </div>
 
               )

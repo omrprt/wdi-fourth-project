@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import { Panel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Auth from '../../lib/Auth';
 
 class UsersProfile extends Component {
   state = {
@@ -10,9 +11,9 @@ class UsersProfile extends Component {
 
   componentDidMount() {
     Axios
-      .get(`/api/users/${this.props.match.params.id}`)
-      .then(res => this.setState({ user: res.data }, () => console.log(this.state)))
-      .catch(err => console.log(err));
+      .get(`/api/users/${Auth.getPayload().userId}`)
+      .then(res => this.setState({ user: res.data }, () => console.log(this.state)));
+    console.log(this.state.user);
   }
 
   render() {
@@ -32,7 +33,7 @@ class UsersProfile extends Component {
               <ul>
                 {this.state.user.diaries && this.state.user.diaries.map((diary, index) =>
                   <li key={index}>
-                    {diary.title}
+                    <Link to={`/diary/${diary._id}`}>{diary.title}</Link>
                   </li>
                 )}
               </ul>

@@ -9,6 +9,20 @@ function createDiary(req, res, next) {
     .catch(next);
 }
 
+function showDiary(req, res, next) {
+  Diary
+    .findById(req.params.id)
+    .populate('createdBy')
+    .exec()
+    .then((diary) => {
+      if(!diary) return res.notFound();
+
+      res.json(diary);
+    })
+    .catch(next);
+}
+
 module.exports = {
-  create: createDiary
+  create: createDiary,
+  show: showDiary
 };

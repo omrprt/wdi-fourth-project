@@ -1,23 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const thoughtDiaryEntrySchema = new mongoose.Schema({
-  situation: {type: String},
-  emotion: [{
-    name: {type: String, required: 'Please include a name' },
-    rating: {type: String}
-  }],
-  thought: {type: String, required: true},
-  evidenceFor: {type: String, required: true},
-  evidenceAgainst: {type: String, required: true},
-  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
-}, {
-  timestamps: true
-});
 
-thoughtDiaryEntrySchema.methods.belongsTo = function logBelongsTo(user) {
-  return this.createdBy.id === user.id;
-};
 
 const userSchema = new mongoose.Schema({
   firstName: { type: String, required: 'Please include your first name' },

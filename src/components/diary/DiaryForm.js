@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import Auth from '../../lib/Auth';
 
+import { Grid, Row, Col} from 'react-bootstrap';
+
 class Diary extends Component {
   state = {
     diary: {
@@ -78,7 +80,7 @@ class Diary extends Component {
   render() {
     return(
       <div>
-          IN THOUGHT DIARY!!!
+        IN THOUGHT DIARY!!!
         <form onSubmit={this.diarySubmit}>
 
           <div className="form-group">
@@ -105,33 +107,49 @@ class Diary extends Component {
             />
           </div>
 
-          <div className="form-group">
-            <strong>Feeling</strong>
-            <input
-              type="text"
-              name="feeling"
-              placeholder="Name the Feeling"
-              onChange={this.handleEmotionChange}
-              value={this.state.newDiary.emotion.feeling}
-              className="form-control"
-            />
-          </div>
+          <Grid>
+            <Row className="show-grid">
+              <Col xs={6} md={8}>
+                <div className="form-group ">
+                  <strong>Feeling</strong>
+                  <input
+                    type="text"
+                    name="feeling"
+                    placeholder="Feeling"
+                    onChange={this.handleEmotionChange}
+                    value={this.state.newDiary.emotion.feeling}
+                    className="form-control"
+                  />
+                </div>
+              </Col>
+              <Col xs={6} md={4}>
+                <div className="form-group">
 
-          <div className="form-group">
-    
-            <strong>Rating 0-10</strong>
-            <input
-              type="range"
-              min="0"
-              max="10"
-              name="rating"
-              placeholder="Rating"
-              onChange={this.handleEmotionChange}
-              value={this.state.newDiary.emotion[0].rating}
-              className="form-control"
-            />
-            <p>{ this.state.newDiary.emotion[0].rating }</p>
-          </div>
+                  <strong>0(mild)-10(intense)</strong>
+
+                  <select
+                    name="rating"
+                    onChange={this.handleEmotionChange}
+                    value={this.state.newDiary.emotion[0].rating}>
+
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                  </select>
+
+                </div>
+              </Col>
+            </Row>
+
+          </Grid>
 
           <div className="form-group">
             <strong>What was your thought?</strong>
@@ -174,11 +192,11 @@ class Diary extends Component {
 
         {/* <ul>
           {this.diaryChange.map((diary, index) =>
-            <li key={index}>
-              {diary.title}
-            </li>
-          )}
-        </ul> */}
+          <li key={index}>
+          {diary.title}
+        </li>
+      )}
+    </ul> */}
       </div>
     );
   }

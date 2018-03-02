@@ -2,7 +2,7 @@ const router = require('express').Router();
 const users = require('../controllers/users');
 const auth  = require('../controllers/auth');
 const diary = require('../controllers/diary');
-// const secureRoute = require('../lib/secureRoute');
+const secureRoute = require('../lib/secureRoute');
 
 router.route('/users/:id')
   .get(users.show)
@@ -18,7 +18,12 @@ router.route('/users/:id/organizations')
   .post(users.addOrganization);
 
 router.route('/diary')
-  .post(diary.create);
+  .post(secureRoute, diary.create);
+
+router.route('/diaries/:id')
+  .get(secureRoute, diary.show);
+// .put(secureRoute, diary.update)
+// .delete(secureRoute, diary.delete);
 
 router.route('/register')
   .post(auth.register);

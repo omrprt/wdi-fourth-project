@@ -1,3 +1,7 @@
+.container {
+      padding: 0 15px;
+}
+
 header {
   text-align: center;
 }
@@ -19,4 +23,22 @@ form {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+select {
+  border:  1px solid #ccc;
+  border-radius: 4px;
+  height: 34px;
+  margin: 0 auto;
+  text-align: center;
+  width: 50%;
+  display: flex;
+  &.rateIt {
+    text-align: center;
+  }
+
+}
+
+.form-group {
+    margin-bottom: 10px;
 }

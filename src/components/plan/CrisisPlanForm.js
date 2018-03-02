@@ -3,8 +3,9 @@ import Axios from 'axios';
 
 class CrisisPlanForm extends Component {
   state = {
-    CrisisPlan:
+    CrisisPlan: {}
   }
+
 
   render() {
     return(
@@ -15,4 +16,4 @@ class CrisisPlanForm extends Component {
   }
 }
 
-export default CrisisPLanForm;
+export default CrisisPlanForm;

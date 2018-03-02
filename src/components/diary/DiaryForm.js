@@ -11,7 +11,7 @@ class Diary extends Component {
       situation: '',
       emotion: [{
         feeling: '',
-        rating: '0'
+        rating: ''
       }],
       thought: '',
       evidenceFor: '',
@@ -23,7 +23,7 @@ class Diary extends Component {
       situation: '',
       emotion: [{
         feeling: '',
-        rating: '0'
+        rating: ''
       }],
       thought: '',
       evidenceFor: '',
@@ -50,12 +50,13 @@ class Diary extends Component {
 
     const newDiary = Object.assign({}, this.state.newDiary, { emotion: [emotion]});
     this.setState({ newDiary });
+
   }
 
   diarySubmit = (e) => {
     e.preventDefault();
     Axios
-      .post('/api/diary/', this.state.newDiary, { headers: { 'Authorization': `Bearer ${Auth.getToken()}` } })
+      .post('/api/diaries/', this.state.newDiary, { headers: { 'Authorization': `Bearer ${Auth.getToken()}` } })
       .then((res) => {
         this.setState(prevState => {
           console.log(prevState);
@@ -116,7 +117,7 @@ class Diary extends Component {
                   <strong>Feeling</strong>
                   <input
                     type="text"
-                    name="emotion.feeling"
+                    name="feeling"
                     placeholder="Feeling"
                     onChange={this.handleEmotionChange}
                     value={this.state.newDiary.emotion.feeling}
@@ -130,7 +131,7 @@ class Diary extends Component {
                   <strong>0(mild)-10(intense)</strong>
 
                   <select
-                    name="emotion.rating"
+                    name="rating"
                     onChange={this.handleEmotionChange}
                     value={this.state.newDiary.emotion[0].rating}>
 

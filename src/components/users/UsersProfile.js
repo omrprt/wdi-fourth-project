@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import Axios from 'axios';
+import React, { Component }      from 'react';
+import Axios                     from 'axios';
 import { Panel, Grid, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import Auth from '../../lib/Auth';
+import { Link }                  from 'react-router-dom';
+import Auth                      from '../../lib/Auth';
 
 class UsersProfile extends Component {
   state = {

@@ -1,8 +1,8 @@
-import React from 'react';
-import Axios from 'axios';
+import React        from 'react';
+import Axios        from 'axios';
 
 import RegisterForm from './RegisterForm';
-import Auth from '../../lib/Auth';
+import Auth         from '../../lib/Auth';
 
 class Register extends React.Component {
 

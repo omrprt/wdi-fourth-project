@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
-import Auth from '../../lib/Auth';
+import Axios                from 'axios';
 
+import Auth              from '../../lib/Auth';
 import { Grid, Row, Col} from 'react-bootstrap';
 
 class Diary extends Component {
@@ -9,10 +9,7 @@ class Diary extends Component {
     diary: {
       title: '',
       situation: '',
-      emotion: [{
-        feeling: '',
-        rating: ''
-      }],
+      emotion: [],
       thought: '',
       evidenceFor: '',
       evidenceAgainst: ''
@@ -34,7 +31,6 @@ class Diary extends Component {
   }
 
 
-
   diaryChange = ({ target: { name, value } }) => {
     const newDiary = Object.assign({}, this.state.newDiary, { [name]: value });
 
@@ -43,14 +39,6 @@ class Diary extends Component {
       newState.newDiary = newDiary;
       return newState;
     }, () => console.log('here', this.state));
-  }
-
-  handleEmotionChange = ({ target: { name, value }}) => {
-    const emotion = Object.assign({}, this.state.newDiary.emotion[0], { [name]: value });
-
-    const newDiary = Object.assign({}, this.state.newDiary, { emotion: [emotion]});
-    this.setState({ newDiary });
-
   }
 
   diarySubmit = (e) => {
@@ -80,11 +68,26 @@ class Diary extends Component {
       .catch(err => console.log(err));
   }
 
+  handleEmotionChange = ({ target: { name, value }}) => {
+    const emotion = Object.assign({}, this.state.newDiary.emotion[0], { [name]: value });
+
+    const newDiary = Object.assign({}, this.state.newDiary, { emotion: [emotion]});
+    this.setState({ newDiary });
+
+  }
+
+
+  handleEmotionSubmit = (e) => {
+    e.preventDefault();
+    const diary = Object.assign({}, this.state.diary, { emotion: this.state.diary.emotion.concat(this.state.newEmotion)});
+    this.setState({diary, newEmotion: { feeling: '', rating: ''} }, () => console.log(this.state));
+  }
+
   render() {
     return(
       <div>
-        IN THOUGHT DIARY!!!
-        <form onSubmit={this.diarySubmit}>
+        THOUGHT DIARY!
+        <form onSubmit={this.diarySubmit} id="diaryForm">
 
           <div className="form-group">
             <strong>Diary&#39;s Name</strong>
@@ -110,11 +113,27 @@ class Diary extends Component {
             />
           </div>
 
+
+
           <Grid>
+            {/* <form onSubmit={this.handleEmotionSubmit} id="emotionForm"> */}
+            <Row>
+              <Col xs={5} md={5}>
+                <strong>Feeling</strong>
+              </Col>
+              <Col xs={5} md={5}>
+                <strong>0(mild)-10(intense)</strong>
+              </Col>
+              <Col xs={5} md={5}>
+
+              </Col>
+
+
+            </Row>
             <Row className="show-grid">
-              <Col xs={6} md={8}>
+              <Col xs={5} md={5}>
                 <div className="form-group ">
-                  <strong>Feeling</strong>
+
                   <input
                     type="text"
                     name="feeling"
@@ -125,11 +144,8 @@ class Diary extends Component {
                   />
                 </div>
               </Col>
-              <Col xs={6} md={4}>
+              <Col xs={5} md={5}>
                 <div className="form-group">
-
-                  <strong>0(mild)-10(intense)</strong>
-
                   <select
                     type="number"
                     name="rating"
@@ -148,12 +164,37 @@ class Diary extends Component {
                     <option value="9">9</option>
                     <option value="10">10</option>
                   </select>
-
+                </div>
+              </Col>
+              <Col xs={2} md={2}>
+                <div >
+                  <button className="btn">+</button>
                 </div>
               </Col>
             </Row>
 
+            {/* </form> */}
+            <Row>
+              {/* { this.state.diary.emotion && this.state.diary.emotion.map((emotion, i) =>
+                <div key={ i }>
+                <Col xs={5} md={5}>
+                <p>{emotion.feeling}</p>
+              </Col>
+              <Col xs={5} md={5}>
+              <p>{emotion.rating}</p>
+            </Col>
+            <Col xs={5} md={5}>
+
+          </Col>
+        </div>
+      )} */}
+
+            </Row>
+
+
+
           </Grid>
+
 
           <div className="form-group">
             <strong>What was your thought?</strong>

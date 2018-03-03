@@ -1,14 +1,14 @@
 import React from 'react';
-import { Switch } from 'react-router-dom';
+import { Switch }     from 'react-router-dom';
 
 import ProtectedRoute from '../utility/ProtectedRoute';
 
-import UsersProfile from './UsersProfile';
-import UsersNetwork from './UsersNetwork';
-import DiaryForm from '../diary/DiaryForm';
-import DiaryShow from '../diary/DiaryShow';
-import IndexPlan from '../plan/IndexPlan';
-import CrisisPlanForm from '../plan/CrisisPlanForm'
+import UsersProfile   from './UsersProfile';
+import UsersNetwork   from './UsersNetwork';
+import DiaryForm      from '../diary/DiaryForm';
+import DiaryShow      from '../diary/DiaryShow';
+import IndexPlan      from '../plan/IndexPlan';
+import CrisisPlanForm from '../plan/CrisisPlanForm';
 
 const UsersRoutes = () => {
   return (

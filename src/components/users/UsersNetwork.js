@@ -3,7 +3,7 @@ import Axios from 'axios';
 import Auth from '../../lib/Auth';
 import { PanelGroup, Panel } from 'react-bootstrap';
 
-import UsersNewFamilyandFriends from './UsersNewFamilyandFriends';
+import UsersNewFamilyandFriends from './UsersNewFamilyAndFriends';
 import UsersNewProfessional from './UsersNewProfessional';
 import UsersNewOrganization from './UsersNewOrganization';
 

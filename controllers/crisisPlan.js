@@ -33,5 +33,3 @@ module.exports = {
   getAnyPlan: getAnyPlan,
   getSpecificPlan: getSpecificPlan
 };
-
-// test

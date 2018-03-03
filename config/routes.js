@@ -36,7 +36,7 @@ router.route('/crisisPlan')
   .get(secureRoute, crisisPlan.getAnyPlan);
 
 router.route('/crisisPlan/:id')
-  .get(secureRoute, crisisPlan.getSpecificPlan)
+  .get(secureRoute, crisisPlan.getSpecificPlan);
 
 router.all('/*', (req, res) => res.notFound());
 

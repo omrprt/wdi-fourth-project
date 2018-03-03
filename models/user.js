@@ -10,17 +10,17 @@ const userSchema = new mongoose.Schema({
   myProfessionals: [{
     name: {type: String, required: 'Please include a name'},
     profession: {type: String, required: 'Include their profession'},
-    phoneNumber: {type: String, required: 'Include their contact number'}
+    phoneNumber: {type: Number, required: 'Include their contact number'}
   }],
   myFamilyandFriends: [{
     name: {type: String, required: 'Please include a name' },
     relationship: {type: String},
-    phoneNumber: {type: String}
+    phoneNumber: {type: Number}
   }],
   myOrganizations: [{
     name: {type: String, required: 'Please include a name'},
     url: {type: String},
-    phoneNumber: {type: String}
+    phoneNumber: {type: Number}
   }],
   myCrisisPlan: { type: mongoose.Schema.ObjectId, ref: 'crisisPlan'}
 });

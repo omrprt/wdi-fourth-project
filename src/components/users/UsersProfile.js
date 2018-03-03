@@ -61,7 +61,8 @@ class UsersProfile extends Component {
                         {myFamilyandFriend.relationship}
                       </Col>
                       <Col xs={4} md={4}>
-                        {myFamilyandFriend.phoneNumber}
+                        <a href={`tel:${myFamilyandFriend.phoneNumber}`}>{myFamilyandFriend.phoneNumber}</a>
+
                       </Col>
                     </Row>
                   </div>
@@ -81,7 +82,7 @@ class UsersProfile extends Component {
                         {myProfessional.profession}
                       </Col>
                       <Col xs={4} md={4}>
-                        {myProfessional.phoneNumber}
+                        <a href={`tel:${myProfessional.phoneNumber}`}>{myProfessional.phoneNumber}</a>
                       </Col>
                     </Row>
                   </div>
@@ -89,17 +90,26 @@ class UsersProfile extends Component {
               </Grid>
 
 
-      
-
-              <ul>
+              <Grid>
+                <h3>Organizations</h3>
                 {this.state.user.myOrganizations && this.state.user.myOrganizations.map((myOrganizations, index) =>
-                  <li key={index}>
-                    {myOrganizations.name}
-                    {myOrganizations.url}
-                    {myOrganizations.phoneNumber}
-                  </li>
+                  <div key={index}>
+                    <Row className="show-grid">
+                      <Col xs={6} md={6}>
+                        <a href={ myOrganizations.url}>
+                          {myOrganizations.name}
+                        </a>
+                      </Col>
+                      <Col xs={6} md={6}>
+                        <a href={`tel:${myOrganizations.phoneNumber}`}>{myOrganizations.phoneNumber}</a>
+                      </Col>
+
+                    </Row>
+                  </div>
                 )}
-              </ul>
+              </Grid>
+
+
             </Panel.Body>
           </Panel.Collapse>
         </Panel>

@@ -5,7 +5,7 @@ const diarySchema = new mongoose.Schema({
   situation: {type: String},
   emotion: [{
     feeling: {type: String},
-    rating: {type: String}
+    rating: {type: Number}
   }],
   thought: {type: String, required: true},
   evidenceFor: {type: String, required: true},

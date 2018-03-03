@@ -131,6 +131,7 @@ class Diary extends Component {
                   <strong>0(mild)-10(intense)</strong>
 
                   <select
+                    type="number"
                     name="rating"
                     onChange={this.handleEmotionChange}
                     value={this.state.newDiary.emotion[0].rating}>

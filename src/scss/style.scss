@@ -4,16 +4,25 @@
 
 header {
   text-align: center;
+  background-color: #5DE396;
 }
 
 h1 {
   font-size: 25px;
+  color: #011638;
+}
+
+h2, h3{
+  color: #011638;
 }
 
 h3 {
-  font-size: 20px;
+  font-size: 18px;
 }
 
+i {
+  color: #46A1D9;
+}
 form {
   width: 75%;
   margin: 10px auto 0;

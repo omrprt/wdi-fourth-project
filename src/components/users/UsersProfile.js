@@ -61,7 +61,7 @@ class UsersProfile extends Component {
                         {myFamilyandFriend.relationship}
                       </Col>
                       <Col xs={4} md={4}>
-                        <a href={`tel:${myFamilyandFriend.phoneNumber}`}>{myFamilyandFriend.phoneNumber}</a>
+                        <a href={`tel:${myFamilyandFriend.phoneNumber}`}><i className="fa fa-phone-square"></i> {myFamilyandFriend.phoneNumber}</a>
 
                       </Col>
                     </Row>
@@ -82,7 +82,7 @@ class UsersProfile extends Component {
                         {myProfessional.profession}
                       </Col>
                       <Col xs={4} md={4}>
-                        <a href={`tel:${myProfessional.phoneNumber}`}>{myProfessional.phoneNumber}</a>
+                        <a href={`tel:${myProfessional.phoneNumber}`}><i className="fa fa-phone-square"></i> {myProfessional.phoneNumber}</a>
                       </Col>
                     </Row>
                   </div>
@@ -95,13 +95,12 @@ class UsersProfile extends Component {
                 {this.state.user.myOrganizations && this.state.user.myOrganizations.map((myOrganizations, index) =>
                   <div key={index}>
                     <Row className="show-grid">
-                      <Col xs={6} md={6}>
-                        <a href={ myOrganizations.url}>
-                          {myOrganizations.name}
+                      <Col xs={8} md={8}>
+                        <a href={ myOrganizations.url}><i className="fa fa-globe"></i> {myOrganizations.name}
                         </a>
                       </Col>
-                      <Col xs={6} md={6}>
-                        <a href={`tel:${myOrganizations.phoneNumber}`}>{myOrganizations.phoneNumber}</a>
+                      <Col xs={4} md={4}>
+                        <a href={`tel:${myOrganizations.phoneNumber}`}><i className="fa fa-phone-square"></i> {myOrganizations.phoneNumber}</a>
                       </Col>
 
                     </Row>

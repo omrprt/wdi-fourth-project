@@ -14,7 +14,7 @@ const Nav = ({ history }) => {
   return (
     <header>
       <div className="container">
-        <h1>MY Mental Health Planner</h1>
+        <h1>My Mental Health Planner</h1>
       </div>
       { !Auth.isAuthenticated() && <Link to="/">Home </Link>}
 

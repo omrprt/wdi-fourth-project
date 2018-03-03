@@ -19,9 +19,9 @@ const UsersNewOrganization = ({ organizationChange, organizationSubmit, newOrgan
       <div className="form-group">
         <strong>Webpage</strong>
         <input
-          type="text"
+          type="url"
           name="url"
-          placeholder="Organization&#39;s Title"
+          placeholder="Organization&#39;s Webpage"
           onChange={organizationChange}
           value={newOrganization.url}
           className="form-control"

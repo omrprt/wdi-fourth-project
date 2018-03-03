@@ -13,4 +13,4 @@ crisisPlanSchema.methods.belongsTo = function logBelongsTo(user) {
   return this.createdBy.id === user.id;
 };
 
-module.exports = mongoose.model('crisisPlan', crisisPlanSchema);
+module.exports = mongoose.model('CrisisPlan', crisisPlanSchema);

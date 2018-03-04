@@ -1,8 +1,8 @@
 main.container {
   padding: 0 15px;
   max-width: 750px;
-}
 
+}
 
 .panel .container {
   padding: 0;
@@ -137,10 +137,12 @@ button.btn {
   text-align: center;
 }
 
+
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
   background-color:  #f5f5f5;
   margin-right: 0px;
 }
+
 
 @media screen and (max-width: 1500px) and (min-width: 826px) {
 
@@ -148,6 +150,10 @@ button.btn {
     display: none;
   }
 
+  .container {
+
+    max-width: 750px;
+  }
   .nav>li>a {
     width: 200px;
   }
@@ -156,7 +162,6 @@ button.btn {
 @media screen and (max-width: 825px) and (min-width: 625px) {
   .xMobile {
     display: none;
-    // max-width: 90%;
   }
 
   .nav>li>a {
@@ -168,4 +173,5 @@ button.btn {
   .xFull {
     display: none;
   }
+
 }

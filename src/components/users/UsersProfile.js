@@ -18,7 +18,8 @@ class UsersProfile extends Component {
   render() {
     return(
       <div>
-        <h3>How are you feeling today { this.state.user.firstName}?</h3>
+        <div className="xMobile">
+        <h3 className="text-center">How are you feeling today { this.state.user.firstName}?</h3>
 
         <Panel >
           <Panel.Heading>
@@ -126,7 +127,7 @@ class UsersProfile extends Component {
           </Panel.Collapse>
         </Panel>
 
-
+        </div>
       </div>
     );
   }

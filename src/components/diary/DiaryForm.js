@@ -76,7 +76,6 @@ class Diary extends Component {
 
   }
 
-
   handleEmotionSubmit = (e) => {
     e.preventDefault();
     const diary = Object.assign({}, this.state.diary, { emotion: this.state.diary.emotion.concat(this.state.newEmotion)});

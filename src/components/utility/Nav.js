@@ -16,7 +16,8 @@ const Nav = ({ history }) => {
       <div className="container">
         <h1>My Mental Health Planner</h1>
       </div>
-      { !Auth.isAuthenticated() && <Link to="/">Home </Link>}
+      { !Auth.isAuthenticated() && <Link to="/"
+        className="standard-button">Home </Link>}
 
       {' '}
       { !Auth.isAuthenticated() && <Link to="/login" className="standard-button">  Login</Link>}

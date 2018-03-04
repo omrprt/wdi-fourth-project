@@ -1,37 +1,48 @@
 .container {
-      padding: 0 15px;
+  padding: 0 15px;
 }
 
 header {
   text-align: center;
-  background-color: #5DE396;
+  background: #11998e;
+  background: -webkit-linear-gradient(to right, #11998e, #38ef7d);
+  background: linear-gradient(to right, #11998e, #38ef7d);
+
 }
 
 h1 {
   font-size: 25px;
-  color: #011638;
 }
 
 h2, h3{
-  color: #011638;
 }
 
 h3 {
   font-size: 18px;
 }
 
-i {
-  color: #46A1D9;
+a.standard-button {
+  color: #0B587C;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: bold;
+  &:hover {
+    color: #FFBC42;
+    text-decoration: none;
+  }
+  &:active {
+    color: #FFBC42;
+  }
 }
-// form {
-//   width: 75%;
-//   margin: 10px auto 0;
-// }
+
+i {
+  color: #11998e;
+}
 
 .panel-heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 select {
@@ -48,6 +59,29 @@ select {
 
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 10% 5%;
+}
+
 .form-group {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+button.btn {
+  background-color: #11998e;
+  display: flex;
+  margin: 0 auto;
+  color: #0B587C;
+  text-transform: uppercase;
+  font-weight: bold;
+  background: #11998e;
+  background: -webkit-linear-gradient(to right, #11998e, #38ef7d);
+  background: linear-gradient(to right, #11998e, #38ef7d);
+      border: 0px solid transparent;
+  &:hover {
+    color: #FFBC42;
+    text-decoration: none;
+  }
 }

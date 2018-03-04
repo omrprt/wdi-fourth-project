@@ -20,7 +20,6 @@ class UsersProfile extends Component {
       <div>
         <div className="xMobile">
           <h3 className="text-center">How are you feeling today { this.state.user.firstName}?</h3>
-
           <Panel >
             <Panel.Heading>
               <Panel.Toggle componentClass="a"><i className="fa fa-caret-down fa-3x"></i></Panel.Toggle>

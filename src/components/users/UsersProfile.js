@@ -19,115 +19,121 @@ class UsersProfile extends Component {
     return(
       <div>
         <div className="xMobile">
-        <h3 className="text-center">How are you feeling today { this.state.user.firstName}?</h3>
+          <h3 className="text-center">How are you feeling today { this.state.user.firstName}?</h3>
 
-        <Panel >
-          <Panel.Heading>
-            <Panel.Toggle componentClass="a"><i className="fa fa-caret-down fa-3x"></i></Panel.Toggle>
-            <Panel.Title>Thought Diary</Panel.Title>
-            <Link to={'/diaries'}>  <i className="fa fa-edit fa-2x"></i></Link>
-          </Panel.Heading>
+          <Panel >
+            <Panel.Heading>
+              <Panel.Toggle componentClass="a"><i className="fa fa-caret-down fa-3x"></i></Panel.Toggle>
+              <Panel.Title>Thought Diary</Panel.Title>
+              <Link to={'/diaries'}>  <i className="fa fa-edit fa-2x"></i></Link>
+            </Panel.Heading>
 
-          <Panel.Collapse>
-            <Panel.Body>
-              <ul>
-                {this.state.user.diaries && this.state.user.diaries.map((diary, index) =>
-                  <li key={index}>
-                    <Link to={`/diaries/${diary._id}`}>{diary.title}</Link>
-                  </li>
-                )}
-              </ul>
-            </Panel.Body>
-          </Panel.Collapse>
-        </Panel>
+            <Panel.Collapse>
+              <Panel.Body>
+                <ul>
+                  {this.state.user.diaries && this.state.user.diaries.map((diary, index) =>
+                    <li key={index}>
+                      <Link to={`/diaries/${diary._id}`}>{diary.title}</Link>
+                    </li>
+                  )}
+                </ul>
+              </Panel.Body>
+            </Panel.Collapse>
+          </Panel>
 
-        <Panel >
-          <Panel.Heading>
-            <Panel.Toggle componentClass="a"><i className="fa fa-caret-down fa-3x"></i></Panel.Toggle>
-            <Panel.Title>My Support Network</Panel.Title>
-            <Link to={`/users/${this.state.user.id}/mynetwork`}><i className="fa fa-user-plus fa-2x"></i></Link>
-          </Panel.Heading>
-          <Panel.Collapse>
-            <Panel.Body>
+          <Panel >
+            <Panel.Heading>
+              <Panel.Toggle componentClass="a"><i className="fa fa-caret-down fa-3x"></i></Panel.Toggle>
+              <Panel.Title>My Support Network</Panel.Title>
+              <Link to={`/users/${this.state.user.id}/mynetwork`}><i className="fa fa-user-plus fa-2x"></i></Link>
+            </Panel.Heading>
+            <Panel.Collapse>
+              <Panel.Body>
 
-              <Grid>
-                <h3>My Friends and Family Support</h3>
-                {this.state.user.myFamilyandFriends && this.state.user.myFamilyandFriends.map((myFamilyandFriend, index) =>
-                  <div key={index}>
-                    <Row className="show-grid">
-                      <Col xs={4} md={4}>
-                        {myFamilyandFriend.name}
-                      </Col>
-                      <Col xs={4} md={4}>
-                        {myFamilyandFriend.relationship}
-                      </Col>
-                      <Col xs={4} md={4}>
-                        <a href={`tel:${myFamilyandFriend.phoneNumber}`}><i className="fa fa-phone-square"></i> {myFamilyandFriend.phoneNumber}</a>
+                <Grid>
+                  <h3>My Friends and Family Support</h3>
+                  {this.state.user.myFamilyandFriends && this.state.user.myFamilyandFriends.map((myFamilyandFriend, index) =>
+                    <div key={index}>
+                      <Row className="show-grid">
+                        <Col xs={4} md={4}>
+                          {myFamilyandFriend.name}
+                        </Col>
+                        <Col xs={4} md={4}>
+                          {myFamilyandFriend.relationship}
+                        </Col>
+                        <Col xs={4} md={4}>
+                          <a href={`tel:${myFamilyandFriend.phoneNumber}`}><i className="fa fa-phone-square"></i> {myFamilyandFriend.phoneNumber}</a>
 
-                      </Col>
-                    </Row>
-                  </div>
-                )}
-              </Grid>
-
-
-              <Grid>
-                <h3>My Professional Support</h3>
-                {this.state.user.myProfessionals && this.state.user.myProfessionals.map((myProfessional, index) =>
-                  <div key={index}>
-                    <Row className="show-grid">
-                      <Col xs={4} md={4}>
-                        {myProfessional.name}
-                      </Col>
-                      <Col xs={4} md={4}>
-                        {myProfessional.profession}
-                      </Col>
-                      <Col xs={4} md={4}>
-                        <a href={`tel:${myProfessional.phoneNumber}`}><i className="fa fa-phone-square"></i> {myProfessional.phoneNumber}</a>
-                      </Col>
-                    </Row>
-                  </div>
-                )}
-              </Grid>
+                        </Col>
+                      </Row>
+                    </div>
+                  )}
+                </Grid>
 
 
-              <Grid>
-                <h3>Organizations</h3>
-                {this.state.user.myOrganizations && this.state.user.myOrganizations.map((myOrganizations, index) =>
-                  <div key={index}>
-                    <Row className="show-grid">
-                      <Col xs={8} md={8}>
-                        <a href={ myOrganizations.url}><i className="fa fa-globe"></i> {myOrganizations.name}
-                        </a>
-                      </Col>
-                      <Col xs={4} md={4}>
-                        <a href={`tel:${myOrganizations.phoneNumber}`}><i className="fa fa-phone-square"></i> {myOrganizations.phoneNumber}</a>
-                      </Col>
+                <Grid>
+                  <h3>My Professional Support</h3>
+                  {this.state.user.myProfessionals && this.state.user.myProfessionals.map((myProfessional, index) =>
+                    <div key={index}>
+                      <Row className="show-grid">
+                        <Col xs={4} md={4}>
+                          {myProfessional.name}
+                        </Col>
+                        <Col xs={4} md={4}>
+                          {myProfessional.profession}
+                        </Col>
+                        <Col xs={4} md={4}>
+                          <a href={`tel:${myProfessional.phoneNumber}`}><i className="fa fa-phone-square"></i> {myProfessional.phoneNumber}</a>
+                        </Col>
+                      </Row>
+                    </div>
+                  )}
+                </Grid>
 
-                    </Row>
-                  </div>
-                )}
-              </Grid>
+
+                <Grid>
+                  <h3>Organizations</h3>
+                  {this.state.user.myOrganizations && this.state.user.myOrganizations.map((myOrganizations, index) =>
+                    <div key={index}>
+                      <Row className="show-grid">
+                        <Col xs={8} md={8}>
+                          <a href={ myOrganizations.url}><i className="fa fa-globe"></i> {myOrganizations.name}
+                          </a>
+                        </Col>
+                        <Col xs={4} md={4}>
+                          <a href={`tel:${myOrganizations.phoneNumber}`}><i className="fa fa-phone-square"></i> {myOrganizations.phoneNumber}</a>
+                        </Col>
+
+                      </Row>
+                    </div>
+                  )}
+                </Grid>
 
 
-            </Panel.Body>
-          </Panel.Collapse>
-        </Panel>
+              </Panel.Body>
+            </Panel.Collapse>
+          </Panel>
 
-        <Panel  >
-          <Panel.Heading>
-            <Panel.Toggle componentClass="a"><i className="fa fa-caret-down fa-3x"></i></Panel.Toggle>
-            <Panel.Title>My Plans</Panel.Title>
-            <Link to={'/myplans'}>  <i className="fa fa-book fa-2x"></i></Link>
-          </Panel.Heading>
-          <Panel.Collapse>
-            <Panel.Body>
-              Jane 594-3985
-            </Panel.Body>
-          </Panel.Collapse>
-        </Panel>
-
+          <Panel  >
+            <Panel.Heading>
+              <Panel.Toggle componentClass="a"><i className="fa fa-caret-down fa-3x"></i></Panel.Toggle>
+              <Panel.Title>My Plans</Panel.Title>
+              <Link to={'/myplans'}>  <i className="fa fa-book fa-2x"></i></Link>
+            </Panel.Heading>
+            <Panel.Collapse>
+              <Panel.Body>
+                Jane 594-3985
+              </Panel.Body>
+            </Panel.Collapse>
+          </Panel>
         </div>
+        <div className="xFull">
+          bigscreen
+        </div>
+
+
+
+
       </div>
     );
   }

@@ -186,7 +186,7 @@ class Diary extends Component {
           <div className="form-group">
             <strong>What was your thought?</strong>
             <input
-              type="tel"
+              type="text"
               name="thought"
               placeholder="What was your thought?"
               onChange={this.diaryChange}
@@ -198,7 +198,7 @@ class Diary extends Component {
           <div className="form-group">
             <strong>What is the evidence to support that thought?</strong>
             <input
-              type="tel"
+              type="text"
               name="evidenceFor"
               placeholder="Evidence Supporting supporting your thought"
               onChange={this.diaryChange}
@@ -210,7 +210,7 @@ class Diary extends Component {
           <div className="form-group">
             <strong>What is the evidence against that thought? </strong>
             <input
-              type="tel"
+              type="text"
               name="evidenceAgainst"
               placeholder="Evidence against that thought"
               onChange={this.diaryChange}

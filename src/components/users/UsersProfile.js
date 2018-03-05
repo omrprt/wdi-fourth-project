@@ -33,31 +33,27 @@ class UsersProfile extends Component {
 
 
                 <Grid>
-                  <Panel className="contacts">
-                    
-                    <ListGroup>
                       {this.state.user.diaries && this.state.user.diaries.map((diary, index) =>
                         <div key={index}>
 
                           <Link to={`/diaries/${diary._id}`}>
-                          <ListGroupItem>
-                            <Row className="show-grid">
-                              <Col xs={8} md={8}>
-                                { (new Date(diary.createdAt)).toLocaleDateString('en-UK', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
-                              </Col>
-                              <Col xs={4} md={4}>
-                                {diary.title}
-                              </Col>
-                            </Row>
-                          </ListGroupItem>
+                          <ListGroup>
+                            <ListGroupItem className="dates">
+                              <Row >
+                                <Col xs={6} md={6}>
+                                  { (new Date(diary.createdAt)).toLocaleDateString('en-UK', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' })}
+                                </Col>
+                                <Col xs={6} md={6}>
+                                  {diary.title}
+                                </Col>
+                              </Row>
+
+                            </ListGroupItem>
+                          </ListGroup>
 
                         </Link>
                       </div>
                     )}
-                  </ListGroup>
-
-
-                </Panel>
               </Grid>
 
           </Panel.Body>

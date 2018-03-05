@@ -10,9 +10,9 @@ class CrisisPlanForm extends Component {
       strategies: []
     },
 
-    newSigns: [],
+    newSigns: {},
 
-    newStrategies: []
+    newStrategies: {}
 
   }
 

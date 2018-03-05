@@ -20,7 +20,7 @@ class App extends Component {
         <div>
           <Nav />
           <main className="container">
-            
+
             <Switch>
               <Route path="/login" component={Login} />
               <Route path="/register" component={ Register } />

@@ -19,13 +19,12 @@ const Nav = ({ history }) => {
       { !Auth.isAuthenticated() && <Link to="/"
         className="standard-button">Home </Link>}
 
-      {' '}
+      { !Auth.isAuthenticated() && <span className="navDivider"> | </span>}
       { !Auth.isAuthenticated() && <Link to="/login" className="standard-button">  Login</Link>}
-      {' '}
+      { !Auth.isAuthenticated() && <span className="navDivider"> | </span>}
       { !Auth.isAuthenticated() && <Link to="/register" className="standard-button">  Register</Link> }
-      {' '}
       { Auth.isAuthenticated() && <Link to={`/users/${Auth.getPayload().userId}`} className="standard-button">  My Profile</Link> }
-      {' '}
+      { Auth.isAuthenticated() && <span className="navDivider"> | </span>}
       { Auth.isAuthenticated() && <a href="#" className="standard-button" onClick={logout}>  Logout</a> }
     </header>
   );

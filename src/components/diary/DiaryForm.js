@@ -35,28 +35,28 @@ class Diary extends Component {
   diarySubmit = (e) => {
     e.preventDefault();
     Axios
-    .post('/api/diaries/', this.state.newDiary, { headers: { 'Authorization': `Bearer ${Auth.getToken()}` } })
-    .then((res) => {
-      this.setState(prevState => {
-        console.log(prevState);
-        const newState = prevState;
+      .post('/api/diaries/', this.state.newDiary, { headers: { 'Authorization': `Bearer ${Auth.getToken()}` } })
+      .then((res) => {
+        this.setState(prevState => {
+          console.log(prevState);
+          const newState = prevState;
 
-        newState.user = res.data;
-        newState.newDiary = {
-          title: '',
-          situation: '',
-          emotion: [{
-            feeling: '',
-            rating: ''
-          }],
-          thought: '',
-          evidenceFor: '',
-          evidenceAgainst: ''
-        };
-        return newState;
-      }, () => console.log(this.state));
-    })
-    .catch(err => console.log(err));
+          newState.user = res.data;
+          newState.newDiary = {
+            title: '',
+            situation: '',
+            emotion: [{
+              feeling: '',
+              rating: ''
+            }],
+            thought: '',
+            evidenceFor: '',
+            evidenceAgainst: ''
+          };
+          return newState;
+        }, () => console.log(this.state));
+      })
+      .catch(err => console.log(err));
   }
 
   handleEmotionChange = ({ target: { name, value }}) => {
@@ -106,16 +106,12 @@ class Diary extends Component {
 
           <Grid>
             <Row>
-              <Col xs={5} md={5}>
+              <Col xs={6} md={6}>
                 <strong>Feeling</strong>
               </Col>
-              <Col xs={5} md={5}>
+              <Col xs={6} md={6}>
                 <strong>0(mild)-10(intense)</strong>
               </Col>
-              <Col xs={5} md={5}>
-
-              </Col>
-
 
             </Row>
             <Row className="show-grid">

@@ -25,7 +25,7 @@ class DiaryShow extends Component {
                   <p>{this.state.diary.title}</p>
                   <p>{this.state.diary.situation}</p>
                   <ul>
-                    {this.state.diary.emotion.map((emotion, index) =>
+                    {this.state.diary.emotions.map((emotion, index) =>
                       <li key={index}>
                         <p>{emotion.feeling}</p>
                         <p>{emotion.rating}</p>

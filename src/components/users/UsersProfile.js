@@ -11,8 +11,8 @@ class UsersProfile extends Component {
 
   componentDidMount() {
     Axios
-      .get(`/api/users/${Auth.getPayload().userId}`)
-      .then(res => this.setState({ user: res.data }, () => console.log(this.state)));
+    .get(`/api/users/${Auth.getPayload().userId}`)
+    .then(res => this.setState({ user: res.data }, () => console.log(this.state)));
   }
 
   render() {
@@ -33,7 +33,14 @@ class UsersProfile extends Component {
                 <ul>
                   {this.state.user.diaries && this.state.user.diaries.map((diary, index) =>
                     <li key={index}>
-                      <Link to={`/diaries/${diary._id}`}>{diary.title}</Link>
+                      <Link to={`/diaries/${diary._id}`}>{diary.title} - Created on
+                        {/* {new Intl.DateTimeFormat('en-GB', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: '2-digit'
+                        }).format(diary.createdAt)} */}
+
+                      </Link>
                     </li>
                   )}
                 </ul>

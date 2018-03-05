@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const diarySchema = new mongoose.Schema({
   title: {type: String},
   situation: {type: String},
-  emotion: [{
+  emotions: [{
     feeling: {type: String},
     rating: {type: Number}
   }],

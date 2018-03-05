@@ -6,27 +6,18 @@ import { Grid, Row, Col} from 'react-bootstrap';
 
 class Diary extends Component {
   state = {
-    diary: {
-      title: '',
-      situation: '',
-      emotion: [],
-      thought: '',
-      evidenceFor: '',
-      evidenceAgainst: ''
-    },
-
     newDiary: {
       title: '',
       situation: '',
-      emotion: [{
-        feeling: '',
-        rating: ''
-      }],
+      emotions: [],
       thought: '',
       evidenceFor: '',
       evidenceAgainst: ''
     },
-
+    newEmotion: {
+      feeling: '',
+      rating: ''
+    },
     errors: {}
   }
 
@@ -69,23 +60,22 @@ class Diary extends Component {
   }
 
   handleEmotionChange = ({ target: { name, value }}) => {
-    const emotion = Object.assign({}, this.state.newDiary.emotion[0], { [name]: value });
-
-    const newDiary = Object.assign({}, this.state.newDiary, { emotion: [emotion]});
-    this.setState({ newDiary });
+    const emotion = Object.assign({}, this.state.newEmotion, { [name]: value });
+    this.setState({ newEmotion: emotion }, () => console.log('this.state',this.state));
 
   }
 
-  handleEmotionSubmit = (e) => {
-    e.preventDefault();
-    const diary = Object.assign({}, this.state.diary, { emotion: this.state.diary.emotion.concat(this.state.newEmotion)});
-    this.setState({diary, newEmotion: { feeling: '', rating: ''} }, () => console.log(this.state));
+  handleEmotionSubmit = () => {
+    const newEmotionsArray = [...this.state.newDiary.emotions, this.state.newEmotion];
+    console.log(newEmotionsArray);
+    const updatedDiary = Object.assign({}, this.state.newDiary, {emotions: newEmotionsArray});
+
+    this.setState({ newDiary: updatedDiary, newEmotion: { feeling: '', rating: ''}}, () => console.log('this.state',this.state));
   }
 
   render() {
     return(
       <div>
-        THOUGHT DIARY!
         <form onSubmit={this.diarySubmit} id="diaryForm">
 
           <div className="form-group">
@@ -115,7 +105,6 @@ class Diary extends Component {
 
 
           <Grid>
-            {/* <form onSubmit={this.handleEmotionSubmit} id="emotionForm"> */}
             <Row>
               <Col xs={5} md={5}>
                 <strong>Feeling</strong>
@@ -138,7 +127,7 @@ class Diary extends Component {
                     name="feeling"
                     placeholder="Feeling"
                     onChange={this.handleEmotionChange}
-                    value={this.state.newDiary.emotion.feeling}
+                    value={this.state.newEmotion.feeling}
                     className="form-control"
                   />
                 </div>
@@ -149,7 +138,7 @@ class Diary extends Component {
                     type="number"
                     name="rating"
                     onChange={this.handleEmotionChange}
-                    value={this.state.newDiary.emotion[0].rating}>
+                    value={this.state.newEmotion.rating}>
 
                     <option value="0">0</option>
                     <option value="1">1</option>
@@ -167,26 +156,25 @@ class Diary extends Component {
               </Col>
               <Col xs={2} md={2}>
                 <div >
-                  <button className="btn">+</button>
+                  <button type="button" className="btn" onClick={ this.handleEmotionSubmit }>+</button>
                 </div>
               </Col>
             </Row>
 
-            {/* </form> */}
             <Row>
-              {/* { this.state.diary.emotion && this.state.diary.emotion.map((emotion, i) =>
+              { this.state.newDiary.emotions && this.state.newDiary.emotions.map((emotion, i) =>
                 <div key={ i }>
-                <Col xs={5} md={5}>
-                <p>{emotion.feeling}</p>
-              </Col>
-              <Col xs={5} md={5}>
-              <p>{emotion.rating}</p>
-            </Col>
-            <Col xs={5} md={5}>
+                  <Col xs={5} md={5}>
+                    <p>{emotion.feeling}</p>
+                  </Col>
+                  <Col xs={5} md={5}>
+                    <p>{emotion.rating}</p>
+                  </Col>
+                  <Col xs={5} md={5}>
 
-          </Col>
-        </div>
-      )} */}
+                  </Col>
+                </div>
+              )}
 
             </Row>
 

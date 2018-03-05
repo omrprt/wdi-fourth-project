@@ -20,7 +20,7 @@ const UsersRoutes = () => {
       <ProtectedRoute path="/users/:id" component={UsersProfile} />
       <ProtectedRoute path="/diaries/:id" component={DiaryShow} />
       <ProtectedRoute path="/diaries" component={DiaryForm} />
-      <ProtectedRoute path="/myplans/crisisplan" component={CrisisPlanForm} />
+      <ProtectedRoute path="/myplans/crisisplan/:id" component={CrisisPlanForm} />
       <ProtectedRoute path="/myplans" component={IndexPlan} />
 
 

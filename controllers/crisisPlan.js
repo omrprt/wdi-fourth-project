@@ -2,7 +2,7 @@ const CrisisPlan = require('../models/myPlan');
 
 function getAnyPlan(req, res, next) {
   CrisisPlan
-    .find({createdBy: req.currentUser._id})
+    .findOne({createdBy: req.currentUser._id})
     .exec()
     .then(plan => {
       if(!plan) {

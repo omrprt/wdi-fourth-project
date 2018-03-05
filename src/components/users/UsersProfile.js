@@ -11,8 +11,8 @@ class UsersProfile extends Component {
 
   componentDidMount() {
     Axios
-    .get(`/api/users/${Auth.getPayload().userId}`)
-    .then(res => this.setState({ user: res.data }, () => console.log(this.state)));
+      .get(`/api/users/${Auth.getPayload().userId}`)
+      .then(res => this.setState({ user: res.data }, () => console.log(this.state)));
   }
 
   render() {

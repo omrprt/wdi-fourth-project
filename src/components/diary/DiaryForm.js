@@ -170,11 +170,7 @@ class Diary extends Component {
                   </div>
                 </div>
               )}
-
             </Row>
-
-
-
           </Grid>
 
           <div className="form-group">

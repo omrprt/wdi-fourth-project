@@ -10,8 +10,8 @@ class DiaryShow extends Component {
 
   componentDidMount() {
     Axios
-    .get(`/api/diaries/${this.props.match.params.id}`, { headers: { 'Authorization': `Bearer ${Auth.getToken()}`}})
-    .then(res => this.setState({ diary: res.data }));
+      .get(`/api/diaries/${this.props.match.params.id}`, { headers: { 'Authorization': `Bearer ${Auth.getToken()}`}})
+      .then(res => this.setState({ diary: res.data }));
   }
 
   render() {

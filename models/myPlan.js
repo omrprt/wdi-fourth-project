@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const crisisPlanSchema = new mongoose.Schema({
-  warningSigns: [{type: String}],
-  copingStrategies: [{type: String}],
+  signs: [{type: String}],
+  strategies: [{type: String}],
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User'},
   public: { type: Boolean, default: false }
 }, {

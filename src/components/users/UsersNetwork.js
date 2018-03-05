@@ -83,7 +83,6 @@ class UsersNetwork extends Component {
       .post(`/api/users/${this.props.match.params.id}/professionals`, this.state.newProfessional, { headers: { 'Authorization': `Bearer ${Auth.getToken()}` } })
       .then((res) => {
         this.setState(prevState => {
-          console.log(prevState);
           const newState = prevState;
 
           newState.user = res.data;
@@ -207,35 +206,6 @@ class UsersNetwork extends Component {
             </Panel.Body>
           </Panel>
         </PanelGroup>
-
-        <ul>
-          {this.state.user.myProfessionals.map((myProfessional, index) =>
-            <li key={index}>
-              {myProfessional.name}
-              {myProfessional.profession}
-              {myProfessional.phoneNumber}
-            </li>
-          )}
-        </ul>
-        <ul>
-          {this.state.user.myFamilyandFriends.map((myFamilyandFriends, index) =>
-            <li key={index}>
-              {myFamilyandFriends.name}
-              {myFamilyandFriends.relationship}
-              {myFamilyandFriends.phoneNumber}
-            </li>
-          )}
-        </ul>
-
-        <ul>
-          {this.state.user.myOrganizations.map((myOrganizations, index) =>
-            <li key={index}>
-              {myOrganizations.name}
-              {myOrganizations.url}
-              {myOrganizations.phoneNumber}
-            </li>
-          )}
-        </ul>
 
       </div>
     );

@@ -19,6 +19,7 @@ function getAnyPlan(req, res, next) {
 }
 
 function getSpecificPlan(req, res, next) {
+  console.log('in specifici plan', res);
   CrisisPlan
     .findById(req.paramas.id)
     .exec()

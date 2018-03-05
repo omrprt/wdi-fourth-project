@@ -35,28 +35,28 @@ class Diary extends Component {
   diarySubmit = (e) => {
     e.preventDefault();
     Axios
-      .post('/api/diaries/', this.state.newDiary, { headers: { 'Authorization': `Bearer ${Auth.getToken()}` } })
-      .then((res) => {
-        this.setState(prevState => {
-          console.log(prevState);
-          const newState = prevState;
+    .post('/api/diaries/', this.state.newDiary, { headers: { 'Authorization': `Bearer ${Auth.getToken()}` } })
+    .then((res) => {
+      this.setState(prevState => {
+        console.log(prevState);
+        const newState = prevState;
 
-          newState.user = res.data;
-          newState.newDiary = {
-            title: '',
-            situation: '',
-            emotion: [{
-              feeling: '',
-              rating: ''
-            }],
-            thought: '',
-            evidenceFor: '',
-            evidenceAgainst: ''
-          };
-          return newState;
-        }, () => console.log(this.state));
-      })
-      .catch(err => console.log(err));
+        newState.user = res.data;
+        newState.newDiary = {
+          title: '',
+          situation: '',
+          emotion: [{
+            feeling: '',
+            rating: ''
+          }],
+          thought: '',
+          evidenceFor: '',
+          evidenceAgainst: ''
+        };
+        return newState;
+      }, () => console.log(this.state));
+    })
+    .catch(err => console.log(err));
   }
 
   handleEmotionChange = ({ target: { name, value }}) => {
@@ -164,15 +164,14 @@ class Diary extends Component {
             <Row>
               { this.state.newDiary.emotions && this.state.newDiary.emotions.map((emotion, i) =>
                 <div key={ i }>
-                  <Col xs={5} md={5}>
-                    <p>{emotion.feeling}</p>
-                  </Col>
-                  <Col xs={5} md={5}>
-                    <p>{emotion.rating}</p>
-                  </Col>
-                  <Col xs={5} md={5}>
-
-                  </Col>
+                  <div className="formFeelings">
+                    <Col xs={6} md={6}>
+                      <p>{emotion.feeling}</p>
+                    </Col>
+                    <Col xs={6} md={6}>
+                      <p>{emotion.rating}</p>
+                    </Col>
+                  </div>
                 </div>
               )}
 
@@ -181,7 +180,6 @@ class Diary extends Component {
 
 
           </Grid>
-
 
           <div className="form-group">
             <strong>What was your thought?</strong>

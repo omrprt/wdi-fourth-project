@@ -31,6 +31,12 @@ userSchema.virtual('diaries', {
   foreignField: 'createdBy' // to match up with the createdBy field in the Post schema
 });
 
+userSchema.virtual('plans', {
+  ref: 'CrisisPlan',
+  localField: '_id', // use the _id field from this schema
+  foreignField: 'createdBy' // to match up with the createdBy field in the Post schema
+});
+
 userSchema.set('toJSON', {
   getters: true,
   virtuals: true,

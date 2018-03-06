@@ -11,8 +11,8 @@ class UsersProfile extends Component {
 
   componentDidMount() {
     Axios
-      .get(`/api/users/${Auth.getPayload().userId}`)
-      .then(res => this.setState({ user: res.data }, () => console.log(this.state)));
+    .get(`/api/users/${Auth.getPayload().userId}`)
+    .then(res => this.setState({ user: res.data }, () => console.log(this.state)));
   }
 
   render() {
@@ -153,7 +153,25 @@ class UsersProfile extends Component {
           </Panel.Heading>
           <Panel.Collapse>
             <Panel.Body>
-              Jane 594-3985
+
+              <Grid>
+                {this.state.user.plans && this.state.user.plans.map((plan, index) =>
+                  <div key={index}>
+                    <Link to={`/myplans/crisisplan/${plan._id}`}>
+                    <ListGroup>
+                      <ListGroupItem className="planNames">
+                        <Row >
+                            { plan.title }
+                        </Row>
+
+                      </ListGroupItem>
+                    </ListGroup>
+                  </Link>
+                </div>
+
+              )}
+
+            </Grid>
             </Panel.Body>
           </Panel.Collapse>
         </Panel>
@@ -247,7 +265,26 @@ class UsersProfile extends Component {
           </Grid>
         </Tab>
         <Tab eventKey={3} title="My Plans">
-          Tab 3 content
+          <Grid>
+            {this.state.user.strategies && this.state.user.strategies.map((strategy, index) =>
+              <div key={index}>
+
+                <Link to={`/diaries/${strategy._id}`}>
+                <ListGroup>
+                  <ListGroupItem className="dates">
+                    <Row >
+
+                        { strategy }
+
+                    </Row>
+
+                  </ListGroupItem>
+                </ListGroup>
+
+              </Link>
+            </div>
+          )}
+        </Grid>
         </Tab>
       </Tabs>
     </div>

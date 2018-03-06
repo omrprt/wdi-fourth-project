@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const crisisPlanSchema = new mongoose.Schema({
+  title: {type: String, default: 'My Crisis Plan'},
   signs: [{type: String}],
   strategies: [{type: String}],
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User'},

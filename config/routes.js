@@ -38,6 +38,12 @@ router.route('/crisisPlan')
 router.route('/crisisPlan/:id')
   .get(secureRoute, crisisPlan.getSpecificPlan);
 
+router.route('/crisisPlan/:id/signs')
+  .post(secureRoute, crisisPlan.createSign);
+
+router.route('/crisisPlan/:id/strategies')
+  .post(secureRoute, crisisPlan.createStrategy);
+
 router.all('/*', (req, res) => res.notFound());
 
 module.exports = router;

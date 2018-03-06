@@ -13,9 +13,9 @@ class CrisisPlanForm extends Component {
       strategies: []
     },
 
-    newSign: {},
+    newSign: '',
 
-    newStrategy: {}
+    newStrategy: ''
 
   }
 
@@ -32,54 +32,34 @@ class CrisisPlanForm extends Component {
   }
 
 
-  signChange = ({ target: { name, value } }) => {
-    const newSign = Object.assign({}, this.state.newSign, { [name]: value });
-    this.setState(prevState => {
-      const newState = prevState;
-      newState.newSign = newSign;
-      return newState;
-    }, () => console.log(this.state));
+  signChange = ({ target: { value } }) => {
+    this.setState({ newSign: value }, () => console.log(this.state));
   }
 
   signSubmit = (e) => {
     e.preventDefault();
+    console.log(this.state.newSign);
     Axios
-      .post(`/api/crisisPlan/${this.props.match.params.id}/signs`, this.state.newSign, { headers: { 'Authorization': `Bearer ${Auth.getToken()}` } })
+      .post(`/api/crisisPlan/${this.props.match.params.id}/signs`, this.state, { headers: { 'Authorization': `Bearer ${Auth.getToken()}` } })
       .then((res) => {
-        this.setState(prevState => {
-          console.log(prevState);
-          const newState = prevState;
-
-          newState.user = res.data;
-          newState.newSign = '';
-          return newState;
-        }, () => console.log(this.state));
+        console.log(res.data);
+        this.setState({crisisPlan: res.data, newSign: '', newStrategy: ''}, () => console.log(this.state));
       })
       .catch(err => console.log(err));
   }
 
-  strategyChange = ({ target: { name, value } }) => {
-    const newStrategy = Object.assign({}, this.state.newstrategies, { [name]: value });
-    this.setState(prevState => {
-      const newState = prevState;
-      newState.newStrategy = newStrategy;
-      return newState;
-    }, () => console.log(this.state));
+  strategyChange = ({ target: { value } }) => {
+    this.setState({ newStrategy: value }, () => console.log(this.state));
   }
 
   strategySubmit = (e) => {
     e.preventDefault();
+    console.log(this.state.newStrategy);
     Axios
-      .post(`/api/crisisPlan/${this.props.match.params.id}/strategies`, this.state.newstrategy, { headers: { 'Authorization': `Bearer ${Auth.getToken()}` } })
+      .post(`/api/crisisPlan/${this.props.match.params.id}/strategies`, this.state, { headers: { 'Authorization': `Bearer ${Auth.getToken()}` } })
       .then((res) => {
-        this.setState(prevState => {
-          console.log(prevState);
-          const newState = prevState;
-
-          newState.user = res.data;
-          newState.newstrategy = '';
-          return newState;
-        }, () => console.log(this.state));
+        console.log(res.data);
+        this.setState({crisisPlan: res.data, newSign: '', newStrategy: ''}, () => console.log(this.state));
       })
       .catch(err => console.log(err));
   }
@@ -110,13 +90,24 @@ class CrisisPlanForm extends Component {
                     <button className="btn">+</button>
                   </Col>
                 </Row>
+                <Row>
+
+
+                  {this.state.crisisPlan.signs && this.state.crisisPlan.signs.map((sign, index) => {
+                    return (<div key={index}>
+                      <Row >
+                        <p>{ sign }</p>
+                      </Row>
+                    </div>);
+                  })}
+                </Row>
               </Grid>
             </div>
           </form>
 
           <form onSubmit={this.strategySubmit}>
             <div className="form-group">
-              <strong>MY WARNING SIGNS</strong>
+              <strong>MY Coping Strategies</strong>
               <Grid>
                 <Row>
                   <Col xs={10} md={10}>
@@ -132,6 +123,21 @@ class CrisisPlanForm extends Component {
                   <Col xs={2} md={2}>
                     <button className="btn">+</button>
                   </Col>
+                </Row>
+                <Row>
+
+
+                    {this.state.crisisPlan.strategies && this.state.crisisPlan.strategies.map((strategy, index) => {
+                      return (<div key={index}>
+
+                          <Row >
+                            <p>{ strategy }</p>
+                          </Row>
+
+                      </div>);
+                    })}
+
+
                 </Row>
               </Grid>
 

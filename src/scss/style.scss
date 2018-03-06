@@ -32,9 +32,16 @@ main.container {
     text-align: center;
       text-transform: uppercase;
   }
+  .panel-default>.panel-heading {
+    display: flex;
+    justify-content: center;
+    a {
+      text-decoration: none;
+    }
+}
 }
 
-.planIndex, {
+.planIndex, .supportView{
   h3 {
     margin: 0 auto 34.50px;
     text-align: center;
@@ -279,22 +286,14 @@ align-items: center;
 
 .planForm h3 {
   margin: 0 auto;
-  // display: flex;
-  // justify-content: center;
+  display: flex;
+  justify-content: center;
   text-align: center;
 }
 
 .planForm .col-xs-10 {
     padding-right: 0;
     padding-left: 0;
-}
-
-.panel-default>.panel-heading {
-    display: flex;
-    justify-content: center;
-    a {
-      text-decoration: none;
-    }
 }
 
 @media screen and (max-width: 1500px) and (min-width: 826px) {

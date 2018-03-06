@@ -11,15 +11,15 @@ class UsersProfile extends Component {
 
   componentDidMount() {
     Axios
-    .get(`/api/users/${Auth.getPayload().userId}`)
-    .then(res => this.setState({ user: res.data }, () => console.log(this.state)));
+      .get(`/api/users/${Auth.getPayload().userId}`)
+      .then(res => this.setState({ user: res.data }, () => console.log(this.state)));
   }
 
   render() {
     return(
-      <div>
+      <div className="homeView">
+        <h3>How are you { this.state.user.firstName}?</h3>
         <div className="xMobile">
-          <h3 className="text-center">How are you feeling today { this.state.user.firstName}?</h3>
 
           <Panel >
             <Panel.Heading>

@@ -9,6 +9,55 @@ main.container {
   margin-top: 5%;
 }
 
+.homeView {
+  h3 {
+    margin: 0 auto 34.50px;
+    text-align: center;
+      text-transform: uppercase;
+  }
+}
+
+
+.diaryForm {
+  h3 {
+    margin: 0 auto;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+.supportView {
+  h3 {
+    margin: 0 auto 34.50px;
+    text-align: center;
+      text-transform: uppercase;
+  }
+}
+
+.planIndex, {
+  h3 {
+    margin: 0 auto 34.50px;
+    text-align: center;
+      text-transform: uppercase;
+  }
+  h4 {
+    text-align: center;
+    }
+    button {
+      min-height: 42px;
+      background-color: #00c593;
+      color: white;
+      font-weight: bold;
+      border-radius: 10px;
+      display: flex;
+      width: 90%;
+      margin: 0 auto;
+      justify-content: center;
+    }
+
+  }
+
+
 .panel .container {
   padding: 0;
 }
@@ -226,6 +275,26 @@ align-items: center;
   background-color: #f5f5f5;
   border-radius: 10px;
   padding: 5px;
+}
+
+.planForm h3 {
+  margin: 0 auto;
+  // display: flex;
+  // justify-content: center;
+  text-align: center;
+}
+
+.planForm .col-xs-10 {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.panel-default>.panel-heading {
+    display: flex;
+    justify-content: center;
+    a {
+      text-decoration: none;
+    }
 }
 
 @media screen and (max-width: 1500px) and (min-width: 826px) {

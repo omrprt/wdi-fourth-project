@@ -15,9 +15,17 @@ class IndexPlan extends Component {
 
   render() {
     return(
-      <div>
-        <p>choose a plan that you would like to work on.</p>
-        <button onClick={this.GetCrisisPlan}> My Crisis Plan </button>
+      <div className="planIndex">
+        <h3>Choose a plan</h3>
+        <button onClick={this.GetCrisisPlan}> Crisis Plan </button>
+        <h4>
+          <p>Upcoming plans:</p>
+          <p>Recovery Plan</p>
+          <p>Anxiety Management</p>
+          <p>Self-Harm Reduction</p>
+          <p>Alcohol Misuse</p>
+
+        </h4>
       </div>
     );
   }

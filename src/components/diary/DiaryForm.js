@@ -75,7 +75,8 @@ class Diary extends Component {
 
   render() {
     return(
-      <div>
+      <div className="diaryForm">
+        <h3>My Thought Diary</h3>
         <form onSubmit={this.diarySubmit} id="diaryForm">
 
           <div className="form-group">
@@ -112,7 +113,6 @@ class Diary extends Component {
               <Col xs={6} md={6}>
                 <strong>0(mild)-10(intense)</strong>
               </Col>
-
             </Row>
             <Row className="show-grid">
               <Col xs={5} md={5}>

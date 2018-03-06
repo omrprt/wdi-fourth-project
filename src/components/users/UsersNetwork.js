@@ -113,9 +113,7 @@ class UsersNetwork extends Component {
       .post(`/api/users/${this.props.match.params.id}/familyandfriends`, this.state.newFamilyAndFriends, { headers: { 'Authorization': `Bearer ${Auth.getToken()}` } })
       .then((res) => {
         this.setState(prevState => {
-          console.log(prevState);
           const newState = prevState;
-
           newState.user = res.data;
           newState.newFamilyAndFriends = {
             name: '',
@@ -143,7 +141,6 @@ class UsersNetwork extends Component {
       .post(`/api/users/${this.props.match.params.id}/organizations`, this.state.newOrganization, { headers: { 'Authorization': `Bearer ${Auth.getToken()}` } })
       .then((res) => {
         this.setState(prevState => {
-          console.log(prevState);
           const newState = prevState;
 
           newState.user = res.data;
@@ -160,11 +157,11 @@ class UsersNetwork extends Component {
 
   render() {
     return(
-      <div>
+      <div className="supportView">
 
-        <p>in network page</p>
-        <PanelGroup accordion id="accordion-example">
-          <Panel eventKey="1">
+        <h3>My Support Network</h3>
+        <PanelGroup accordion id="accordion-example" defaultexpanded="true">
+          <Panel eventKey="1" >
             <Panel.Heading>
               <Panel.Title toggle>Add a Family or Friend</Panel.Title>
             </Panel.Heading>

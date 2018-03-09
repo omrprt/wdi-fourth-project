@@ -127,15 +127,13 @@ class CrisisPlanForm extends Component {
                 <Row>
 
 
-                    {this.state.crisisPlan.strategies && this.state.crisisPlan.strategies.map((strategy, index) => {
-                      return (<div key={index}>
-
-                          <Row >
-                            <p>{ strategy }</p>
-                          </Row>
-
-                      </div>);
-                    })}
+                  {this.state.crisisPlan.strategies && this.state.crisisPlan.strategies.map((strategy, index) => {
+                    return (<div key={index}>
+                      <Row >
+                        <p>{ strategy }</p>
+                      </Row>
+                    </div>);
+                  })}
 
 
                 </Row>

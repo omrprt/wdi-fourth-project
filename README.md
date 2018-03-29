@@ -53,7 +53,7 @@ Your app must:
 
 ### [](https://github.com/omrprt/wdi-fourth-project#technologies-used)Technologies Used
 
-### [](https://github.com/omrprt/wdi-third-project#dependencies)Dependencies
+### [](https://github.com/omrprt/wdi-fourth-project#dependencies)Dependencies
 - axios
 - bcrypt
 - bluebird
@@ -72,7 +72,7 @@ Your app must:
 - react-router-dom
 
 
-###Others
+### [](https://github.com/omrprt/wdi-fourth-project#others)Others
 
 - HTML5
 - SCSS
@@ -105,7 +105,7 @@ Your app must:
   <figcaption>Getting Errors in the Code</figcaption>
 </figure>
 
-### [](https://github.com/omrprt/wdi-third-project#where-next)Where next?
+### [](https://github.com/omrprt/wdi-fourth-project#where-next)Where next?
 
 How can the app be extended and improved:
 

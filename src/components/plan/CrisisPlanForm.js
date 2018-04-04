@@ -70,7 +70,7 @@ class CrisisPlanForm extends Component {
     return(
       <div className="planForm">
         <h3>My Crisis Plan</h3>
-        <div className="xMobile">
+        <div>
           <form onSubmit={this.signSubmit}>
             <div className="form-group">
               <strong>MY WARNING SIGNS</strong>

@@ -40,10 +40,10 @@ class DiaryShow extends Component {
                         <ul>
                           {this.state.diary.emotions.map((emotion, index) =>
                             <li key={index}>
-                              <Col xs={6} md={6}>
+                              <Col xs={6} md={6} lg={6}>
                                 <p>{emotion.feeling}</p>
                               </Col>
-                              <Col xs={6} md={6}>
+                              <Col xs={6} md={6} lg={6}>
                                 <p>{emotion.rating}</p>
                               </Col>
                             </li>

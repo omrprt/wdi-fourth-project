@@ -11,8 +11,8 @@ class UsersProfile extends Component {
 
   componentDidMount() {
     Axios
-    .get(`/api/users/${Auth.getPayload().userId}`)
-    .then(res => this.setState({ user: res.data }, () => console.log(this.state)));
+      .get(`/api/users/${Auth.getPayload().userId}`)
+      .then(res => this.setState({ user: res.data }, () => console.log(this.state)));
   }
 
   render() {
@@ -37,34 +37,34 @@ class UsersProfile extends Component {
                     <div key={index}>
 
                       <Link to={`/diaries/${diary._id}`}>
-                      <ListGroup>
-                        <ListGroupItem className="dates">
-                          <Row >
-                            <Col xs={6} md={6}>
-                              { (new Date(diary.createdAt)).toLocaleDateString('en-UK', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' })}
-                            </Col>
-                            <Col xs={6} md={6}>
-                              {diary.title}
-                            </Col>
-                          </Row>
+                        <ListGroup>
+                          <ListGroupItem className="dates">
+                            <Row >
+                              <Col xs={6} md={6}>
+                                { (new Date(diary.createdAt)).toLocaleDateString('en-UK', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' })}
+                              </Col>
+                              <Col xs={6} md={6}>
+                                {diary.title}
+                              </Col>
+                            </Row>
 
-                        </ListGroupItem>
-                      </ListGroup>
+                          </ListGroupItem>
+                        </ListGroup>
 
-                    </Link>
-                  </div>
-                )}
-              </Grid>
+                      </Link>
+                    </div>
+                  )}
+                </Grid>
 
-            </Panel.Body>
-          </Panel.Collapse>
-        </Panel>
+              </Panel.Body>
+            </Panel.Collapse>
+          </Panel>
 
-        <Panel>
-          <Panel.Heading>
-            <Panel.Toggle componentClass="a"><i className="fa fa-caret-down fa-3x"></i></Panel.Toggle>
-            <Panel.Title>My Support Network</Panel.Title>
-            <Link to={`/users/${this.state.user.id}/mynetwork`}><i className="fa fa-user-plus fa-2x"></i></Link>
+          <Panel>
+            <Panel.Heading>
+              <Panel.Toggle componentClass="a"><i className="fa fa-caret-down fa-3x"></i></Panel.Toggle>
+              <Panel.Title>My Support Network</Panel.Title>
+              <Link to={`/users/${this.state.user.id}/mynetwork`}><i className="fa fa-user-plus fa-2x"></i></Link>
           </Panel.Heading>
           <Panel.Collapse>
             <Panel.Body>
@@ -94,30 +94,30 @@ class UsersProfile extends Component {
                 </Panel>
               </Grid>
 
-              <Grid>
-                <Panel className="contacts">
-                  <Panel.Heading ><h3>My Professional Support</h3></Panel.Heading>
-                  <ListGroup>
-                    {this.state.user.myProfessionals && this.state.user.myProfessionals.map((myProfessional, index) =>
-                      <div key={index}>
-                        <ListGroupItem>
-                          <Row className="show-grid">
-                            <Col xs={4} md={4}>
-                              {myProfessional.name}
-                            </Col>
-                            <Col xs={4} md={4}>
-                              {myProfessional.profession}
-                            </Col>
-                            <Col xs={4} md={4}>
-                              <a href={`tel:${myProfessional.phoneNumber}`}><i className="fa fa-phone-square"></i> {myProfessional.phoneNumber}</a>
-                            </Col>
-                          </Row>
-                        </ListGroupItem>
-                      </div>
-                    )}
-                  </ListGroup>
-                </Panel>
-              </Grid>
+                <Grid>
+                  <Panel className="contacts">
+                    <Panel.Heading ><h3>My Professional Support</h3></Panel.Heading>
+                    <ListGroup>
+                      {this.state.user.myProfessionals && this.state.user.myProfessionals.map((myProfessional, index) =>
+                        <div key={index}>
+                          <ListGroupItem>
+                            <Row className="show-grid">
+                              <Col xs={4} md={4}>
+                                {myProfessional.name}
+                              </Col>
+                              <Col xs={4} md={4}>
+                                {myProfessional.profession}
+                              </Col>
+                              <Col xs={4} md={4}>
+                                <a href={`tel:${myProfessional.phoneNumber}`}><i className="fa fa-phone-square"></i> {myProfessional.phoneNumber}</a>
+                              </Col>
+                            </Row>
+                          </ListGroupItem>
+                        </div>
+                      )}
+                    </ListGroup>
+                  </Panel>
+                </Grid>
 
               <Grid>
                 <Panel className="contacts">
@@ -180,13 +180,36 @@ class UsersProfile extends Component {
       <div className="xFull">
         <Tabs defaultActiveKey={1} animation={false} id="fullTabs">
           <Tab eventKey={1} title="Thought Diary">
-            <ul>
+            {/* <ul>
               {this.state.user.diaries && this.state.user.diaries.map((diary, index) =>
                 <li key={index}>
-                  <Link to={`/diaries/${diary._id}`}>{diary.title}</Link>
+                  <Link className="dates" to={`/diaries/${diary._id}`}>{diary.title}</Link>
                 </li>
               )}
-            </ul>
+            </ul> */}
+            <Grid>
+              {this.state.user.diaries && this.state.user.diaries.map((diary, index) =>
+                <div key={index}>
+
+                  <Link to={`/diaries/${diary._id}`}>
+                    <ListGroup>
+                      <ListGroupItem className="dates">
+                        <Row >
+                          <Col lg={6}>
+                            { (new Date(diary.createdAt)).toLocaleDateString('en-UK', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' })}
+                          </Col>
+                          <Col lg={6}>
+                            {diary.title}
+                          </Col>
+                        </Row>
+
+                      </ListGroupItem>
+                    </ListGroup>
+
+                  </Link>
+                </div>
+              )}
+            </Grid>
           </Tab>
           <Tab eventKey={2} title="My Support Network">
 
@@ -229,7 +252,7 @@ class UsersProfile extends Component {
                           <Col xs={4} md={4}>
                             {myProfessional.profession}
                           </Col>
-                          <Col xs={4} md={4}>
+                            <Col xs={4} md={4}>
                             <a href={`tel:${myProfessional.phoneNumber}`}><i className="fa fa-phone-square"></i> {myProfessional.phoneNumber}</a>
                           </Col>
                         </Row>
@@ -267,30 +290,28 @@ class UsersProfile extends Component {
         <Tab eventKey={3} title="My Plans">
           <Grid>
             {this.state.user.strategies && this.state.user.strategies.map((strategy, index) =>
-              <div key={index}>
+                  <div key={index}>
 
-                <Link to={`/diaries/${strategy._id}`}>
-                <ListGroup>
-                  <ListGroupItem className="dates">
-                    <Row >
+                    <Link to={`/diaries/${strategy._id}`}>
+                      <ListGroup>
+                        <ListGroupItem className="dates">
+                          <Row >
+                            { strategy }
+                          </Row>
 
-                        { strategy }
+                        </ListGroupItem>
+                      </ListGroup>
 
-                    </Row>
-
-                  </ListGroupItem>
-                </ListGroup>
-
-              </Link>
-            </div>
-          )}
-        </Grid>
-        </Tab>
-      </Tabs>
-    </div>
-  </div>
-);
-}
+                    </Link>
+                  </div>
+                )}
+              </Grid>
+            </Tab>
+          </Tabs>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default UsersProfile;

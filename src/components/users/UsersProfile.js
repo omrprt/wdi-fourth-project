@@ -180,6 +180,7 @@ class UsersProfile extends Component {
         <div className="xFull">
           <Tabs defaultActiveKey={1} animation={false} id="fullTabs">
             <Tab eventKey={1} title="Thought Diary">
+              <Link to={'/diaries'}>  <i className="linkButton fa fa-edit fa-2x"> Add a diary entry</i></Link>
 
               <Grid>
                 {this.state.user.diaries && this.state.user.diaries.map((diary, index) =>
@@ -187,12 +188,13 @@ class UsersProfile extends Component {
 
                     <Link to={`/diaries/${diary._id}`}>
                       <ListGroup>
+
                         <ListGroupItem className="dates">
                           <Row >
-                            <Col lg={6}>
+                            <Col md={6} lg={6}>
                               { (new Date(diary.createdAt)).toLocaleDateString('en-UK', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' })}
                             </Col>
-                            <Col lg={6}>
+                            <Col md={6} lg={6}>
                               {diary.title}
                             </Col>
                           </Row>
@@ -206,6 +208,7 @@ class UsersProfile extends Component {
               </Grid>
             </Tab>
             <Tab eventKey={2} title="My Support Network">
+              <Link to={`/users/${this.state.user.id}/mynetwork`}><i className="linkButton fa fa-user-plus fa-2x"> Add a person to your network</i></Link>
 
               <Grid>
                 <Panel className="contacts">
@@ -282,6 +285,7 @@ class UsersProfile extends Component {
               </Grid>
             </Tab>
             <Tab eventKey={3} title="My Plans">
+              <Link to={'/myplans'}>  <i className="linkButton fa fa-book fa-2x"> Add a mental health plan</i></Link>
               <Grid>
                 {this.state.user.plans && this.state.user.plans.map((plan, index) =>
                   <div key={index}>

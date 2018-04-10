@@ -11,12 +11,14 @@ class Login extends React.Component {
     user: {
       email: '',
       password: ''
-    }
+    },
+    error: ''
   };
 
   handleChange = ({ target: { name, value } }) => {
     const user = Object.assign({}, this.state.user, { [name]: value });
-    this.setState({ user });
+    const error = '';
+    this.setState({ user, error });
   }
 
   handleSubmit = (e) => {
@@ -28,7 +30,10 @@ class Login extends React.Component {
         const id = Auth.getPayload().userId;
         this.props.history.push(`/users/${id}`);
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err);
+        this.setState({error: err.response.data.message});
+      });
   }
 
   render() {
@@ -37,6 +42,7 @@ class Login extends React.Component {
         user={this.state.user}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
+        error={this.state.error}
       />
     );
   }

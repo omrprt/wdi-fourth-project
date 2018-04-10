@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Grid, Row, Col} from 'react-bootstrap';
 
-const LoginForm = ({ handleChange, handleSubmit, user}) => {
-
+const LoginForm = ({ handleChange, handleSubmit, user, error}) => {
+  const formIsInvalid = !!error;
 
   return (
 
@@ -32,6 +32,7 @@ const LoginForm = ({ handleChange, handleSubmit, user}) => {
             className="form-control"
           />
         </div>
+        { error && <p>{error}</p> }
       </div>
 
       <div className="xFull loginFull">
@@ -71,12 +72,12 @@ const LoginForm = ({ handleChange, handleSubmit, user}) => {
             </Col>
 
           </Row>
-
+          { error && <p>{error}</p> }
         </Grid>
 
       </div>
 
-      <button className="btn">Login</button>
+      <button disable={formIsInvalid} className="btn">Login</button>
     </form>
   );
 };

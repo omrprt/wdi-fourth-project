@@ -14,6 +14,16 @@ class DiaryShow extends Component {
       .then(res => this.setState({ diary: res.data }));
   }
 
+  deleteItem = () => {
+    Axios
+      .delete(`/api/diaries/${this.props.match.params.id}`,
+        {
+          headers: { 'Authorization': `Bearer ${Auth.getToken()}`}
+        })
+      .then(() => this.props.history.push(`/users/${Auth.getPayload().userId}`))
+      .catch(err => console.log(err));
+  }
+
   render() {
     return(
       <div>
@@ -59,6 +69,13 @@ class DiaryShow extends Component {
                       <Row>
                         <p>Evidence Against:{this.state.diary.evidenceAgainst}</p>
                       </Row>
+                      <Row>
+
+                        <button className="button is-white" onClick={this.deleteItem}>
+                          <i className="fa fa-trash" aria-hidden="true"></i>Delete
+                        </button>
+                      </Row>
+
                     </div>
                   </Grid>
 

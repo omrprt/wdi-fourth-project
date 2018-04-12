@@ -107,7 +107,9 @@ class Diary extends Component {
 
           <Grid>
             <Row>
-              <Col xs={6} md={6}>
+              <Col xs={2} md={2}>
+              </Col>
+              <Col xs={4} md={4}>
                 <strong>Feeling</strong>
               </Col>
               <Col xs={6} md={6}>
@@ -115,6 +117,11 @@ class Diary extends Component {
               </Col>
             </Row>
             <Row className="show-grid">
+              <Col xs={2} md={2}>
+                <div >
+                  <button type="button" className="btn" onClick={ this.handleEmotionSubmit }>+</button>
+                </div>
+              </Col>
               <Col xs={5} md={5}>
                 <div className="form-group ">
 
@@ -150,11 +157,7 @@ class Diary extends Component {
                   </select>
                 </div>
               </Col>
-              <Col xs={2} md={2}>
-                <div >
-                  <button type="button" className="btn" onClick={ this.handleEmotionSubmit }>+</button>
-                </div>
-              </Col>
+
             </Row>
 
             <Row>

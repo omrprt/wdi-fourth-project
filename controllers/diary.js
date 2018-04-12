@@ -22,7 +22,20 @@ function showDiary(req, res, next) {
     .catch(next);
 }
 
+function deleteDiary(req, res, next) {
+  Diary
+    .findById(req.params.id)
+    .exec()
+    .then((diary) => {
+      if(!diary) return res.notFound();
+      return diary.remove();
+    })
+    .then(() => res.status(204).end())
+    .catch(next);
+}
+
 module.exports = {
   create: createDiary,
-  show: showDiary
+  show: showDiary,
+  delete: deleteDiary
 };

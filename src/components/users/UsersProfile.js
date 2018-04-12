@@ -15,6 +15,7 @@ class UsersProfile extends Component {
       .then(res => this.setState({ user: res.data }, () => console.log(this.state)));
   }
 
+
   render() {
     return(
       <div className="homeView">
@@ -40,12 +41,13 @@ class UsersProfile extends Component {
                         <ListGroup>
                           <ListGroupItem className="dates">
                             <Row >
-                              <Col xs={6} md={6}>
+                              <Col xs={7} md={7}>
                                 { (new Date(diary.createdAt)).toLocaleDateString('en-UK', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' })}
                               </Col>
-                              <Col xs={6} md={6}>
+                              <Col xs={5} md={5}>
                                 {diary.title}
                               </Col>
+
                             </Row>
 
                           </ListGroupItem>

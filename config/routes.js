@@ -22,9 +22,10 @@ router.route('/diaries')
   .post(secureRoute, diary.create);
 
 router.route('/diaries/:id')
-  .get(secureRoute, diary.show);
+  .get(secureRoute, diary.show)
+  .delete(secureRoute, diary.delete);
 // .put(secureRoute, diary.update)
-// .delete(secureRoute, diary.delete);
+
 
 router.route('/register')
   .post(auth.register);

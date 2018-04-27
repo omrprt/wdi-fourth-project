@@ -299,6 +299,7 @@ align-items: center;
 .diaryShow{
   p{
     font-size: 1.25em;
+    margin-left: 5px;
   }
 }
 
@@ -323,11 +324,14 @@ align-items: center;
 }
 
 .planForm p {
-  margin-left: 30px;
+  margin:10px 0 10px 30px;
   padding-left: 10px;
   background: #ccc;
-  border-radius: 10px;
-  width: 150px;
+  border-radius: 5px;
+  width: 70%;
+  height: 30px;
+  display: flex;
+  align-items: center;
 }
 
 .planForm .col-xs-10 {

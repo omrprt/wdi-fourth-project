@@ -73,7 +73,7 @@ class CrisisPlanForm extends Component {
         <div>
           <form onSubmit={this.signSubmit}>
             <div className="form-group">
-              <strong>MY WARNING SIGNS</strong>
+              <strong>My Warning Signs</strong>
               <Grid>
                 <Row>
                   <Col xs={10} md={10}>
@@ -107,7 +107,7 @@ class CrisisPlanForm extends Component {
 
           <form onSubmit={this.strategySubmit}>
             <div className="form-group">
-              <strong>MY Coping Strategies</strong>
+              <strong>My Coping Strategies</strong>
               <Grid>
                 <Row>
                   <Col xs={10} md={10}>

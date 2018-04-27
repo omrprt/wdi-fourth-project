@@ -22,8 +22,6 @@ const UsersRoutes = () => {
       <ProtectedRoute path="/diaries" component={DiaryForm} />
       <ProtectedRoute path="/myplans/crisisplan/:id" component={CrisisPlanForm} />
       <ProtectedRoute path="/myplans" component={IndexPlan} />
-
-
     </Switch>
   );
 };

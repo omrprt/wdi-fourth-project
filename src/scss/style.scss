@@ -10,14 +10,14 @@ main.container {
 }
 
 a:-webkit-any-link {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .homeView {
   h3 {
     margin: 0 auto 34.50px;
     text-align: center;
-      text-transform: uppercase;
+    text-transform: uppercase;
   }
 }
 
@@ -42,7 +42,7 @@ a:-webkit-any-link {
   h3 {
     margin: 0 auto 34.50px;
     text-align: center;
-      text-transform: uppercase;
+    text-transform: uppercase;
   }
   .panel-default>.panel-heading {
     display: flex;
@@ -276,8 +276,6 @@ button.btn {
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
   background-color:  #f5f5f5;
   margin-right: 0px;
-  #fullTabs-tab-1{
-  }
 }
 
 .loginFull {

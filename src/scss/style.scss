@@ -186,7 +186,6 @@ i {
   align-items: center;
 }
 
-
 .linkButton{
   display: flex;
   justify-content: center;
@@ -196,7 +195,6 @@ i {
     text-decoration: none;
   }
 }
-
 
 select {
   border:  1px solid #ccc;
@@ -209,7 +207,6 @@ select {
   &.rateIt {
     text-align: center;
   }
-
 }
 
 form {
@@ -255,6 +252,10 @@ button.btn {
   }
 }
 
+button.btn.addbtn {
+  margin: 0 auto;
+}
+
 .col-md-2 {
   padding-left: 0px;
 }
@@ -291,7 +292,7 @@ button.btn {
   margin: 10px auto;
   width: 75%;
   display: flex;
-align-items: center;
+  align-items: center;
 }
 
 .diaryShow{

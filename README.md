@@ -28,7 +28,7 @@ Your app must:
 
 #### Run Locally
 - Download or clone the [Github repo](https://github.com/omrprt/wdi-fourth-project)
-- Run `gulp` in the terminal to compile the source code and open in the browser
+
 
 #### View Online
 - [View on Heroku](https://mhplanner.herokuapp.com/)

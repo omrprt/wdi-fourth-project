@@ -119,7 +119,7 @@ class Diary extends Component {
             <Row className="show-grid">
               <Col xs={2} md={2}>
                 <div >
-                  <button type="button" className="btn" onClick={ this.handleEmotionSubmit }>+</button>
+                  <button type="button" className="btn addbtn" onClick={ this.handleEmotionSubmit }>+</button>
                 </div>
               </Col>
               <Col xs={5} md={5}>

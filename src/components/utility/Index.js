@@ -19,7 +19,7 @@ class Index extends Component {
         <Grid>
           <Row className="description" >
             <Col l={12} className="description_diary">
-              <h5>Log a cognitive behaviour therapy thought diary</h5>
+              <h5>Log a cognitive behavioral therapy thought diary</h5>
               <img src="./assets/images/thought_diary.png"/>
             </Col>
             <Col  l={12} className="description_network">

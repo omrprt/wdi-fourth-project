@@ -21,6 +21,43 @@ a:-webkit-any-link {
   }
 }
 
+.description {
+  display: flex;
+  text-align: center;
+
+    h5 {
+      font-weight: bold;
+        min-height: 40px;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .description_diary {
+    background-color: lightgray;
+    padding: 10px;
+    border-radius: 6px;
+    min-height: 100px;
+  }
+
+  .description_network {
+    background-color: lightgray;
+    padding: 10px;
+    border-radius: 6px;
+    min-height: 100px;
+    margin: 0 10px;
+  }
+
+  .description_plans {
+    background-color: lightgray;
+    padding: 10px;
+    border-radius: 6px;
+    min-height: 100px;
+  }
+}
+
+
 
 .diaryForm {
   h3 {
@@ -44,6 +81,19 @@ a:-webkit-any-link {
     text-align: center;
     text-transform: uppercase;
   }
+
+  .family_friends{
+    background-color: #11998e;
+  }
+
+  .professionals {
+    background-color: #00c593;
+  }
+
+  .organizations {
+    background-color: #38ef7d;
+  }
+
   .panel-default>.panel-heading {
     display: flex;
     justify-content: center;
@@ -380,5 +430,40 @@ button.btn.addbtn {
   .xFull {
     display: none;
   }
+
+  .description {
+    display: inline;
+
+    img {
+      display: none;
+    }
+
+    h5 {
+      font-size: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .description_diary {
+      background-color: #11998e;
+      display: flex;
+    }
+
+    .description_network {
+      background-color: #00c593;
+      display: flex;
+      margin: 10px 0;
+    }
+
+    .description_plans {
+      background-color: #38ef7d;
+      display: flex;
+      justify-content: center;
+    }
+
+
+  }
+
 
 }

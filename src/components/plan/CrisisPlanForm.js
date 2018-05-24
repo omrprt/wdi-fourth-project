@@ -107,14 +107,14 @@ class CrisisPlanForm extends Component {
 
           <form onSubmit={this.strategySubmit}>
             <div className="form-group">
-              <strong>My Coping Strategies</strong>
+              <strong>My Positive Coping Strategies</strong>
               <Grid>
                 <Row>
                   <Col xs={10} md={10}>
                     <input
                       type="text"
                       name="strategies"
-                      placeholder="Coping strategies"
+                      placeholder="Postive coping strategy"
                       onChange={this.strategyChange}
                       value={this.state.newStrategy}
                       className="form-control"

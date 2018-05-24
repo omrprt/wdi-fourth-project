@@ -162,7 +162,7 @@ class UsersNetwork extends Component {
         <h3>My Support Network</h3>
         <PanelGroup accordion id="accordion-example" defaultexpanded="true">
           <Panel eventKey="1" >
-            <Panel.Heading>
+            <Panel.Heading className="family_friends">
               <Panel.Title toggle>Add a Family or Friend</Panel.Title>
             </Panel.Heading>
             <Panel.Body collapsible>
@@ -176,7 +176,7 @@ class UsersNetwork extends Component {
             </Panel.Body>
           </Panel>
           <Panel eventKey="2">
-            <Panel.Heading>
+            <Panel.Heading className="professionals">
               <Panel.Title toggle>Add a Professional</Panel.Title>
             </Panel.Heading>
             <Panel.Body collapsible>
@@ -190,7 +190,7 @@ class UsersNetwork extends Component {
             </Panel.Body>
           </Panel>
           <Panel eventKey="3">
-            <Panel.Heading>
+            <Panel.Heading className="organizations">
               <Panel.Title toggle>Add an Organization</Panel.Title>
             </Panel.Heading>
             <Panel.Body collapsible>

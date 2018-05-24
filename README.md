@@ -97,7 +97,6 @@ Your app must:
 - Drying up the code
 - Coding for both mobile and large screen
 - Making the models reference the user models
-- Coding the search functionality.
 
 
 <figure>
